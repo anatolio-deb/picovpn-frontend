@@ -55,7 +55,8 @@
     </v-card>
   </v-container>
 </template>
-<script setup>
+
+<script setup lang="ts">
 import { ref } from "vue";
 
 const form = ref(false);
@@ -70,10 +71,10 @@ function onSubmit() {
   else loading.value = true;
   setTimeout(() => (loading.value = false), 2000);
 }
-function required(v) {
+function required(v: any) {
   return !!v || "Field is required";
 }
-function passwordConfirmed(v) {
+function passwordConfirmed(v: any) {
   return (
     (!!v && password.value == passwordConfirmation.value) ||
     "Password don't match"
