@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <Logo />
+    <Label />
     <v-row>
       <v-col cols="5"></v-col>
       <v-col cols="1">
@@ -19,7 +19,8 @@
 
 <script setup lang="ts">
 import { useRoute, useRouter } from "vue-router";
-import Logo from "../components/Logo";
+import Label from "./Label.vue";
+// import Logo from "../components/Logo";
 const route = useRoute();
 const router = useRouter();
 

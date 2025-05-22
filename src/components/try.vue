@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <Logo />
+    <Label />
     <v-card class="mx-auto px-6 py-8" max-width="344">
       <v-form v-model="form" @submit.prevent="onSubmit">
         <v-text-field v-model="email" :readonly="loading" :rules="[required]" class="mb-2" label="Email"
@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import Logo from "../components/Logo";
+import Label from "./Label.vue";
 
 const form = ref(false);
 const email = ref(null);
