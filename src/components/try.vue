@@ -1,12 +1,6 @@
 <template>
   <v-container>
-    <div>
-      <v-img class="mb-4" height="150" src="@/assets/logo.png" />
-      <div class="mb-8 text-center">
-        <div class="text-body-2 font-weight-light mb-n1">Welcome to</div>
-        <h1 class="text-h2 font-weight-bold">PicoVPN</h1>
-      </div>
-    </div>
+    <Logo />
     <v-card class="mx-auto px-6 py-8" max-width="344">
       <v-form v-model="form" @submit.prevent="onSubmit">
         <v-text-field v-model="email" :readonly="loading" :rules="[required]" class="mb-2" label="Email"
@@ -31,6 +25,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import Logo from "../components/Logo";
 
 const form = ref(false);
 const email = ref(null);
