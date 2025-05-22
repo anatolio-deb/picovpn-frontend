@@ -9,6 +9,8 @@ import { registerPlugins } from '@/plugins'
 
 // Components
 import App from './App.vue'
+import VueAxios from 'vue-axios'
+import axios from 'axios'
 
 // Composables
 import { createApp } from 'vue'
@@ -16,7 +18,9 @@ import { createApp } from 'vue'
 // Styles
 import 'unfonts.css'
 
+
 const app = createApp(App)
+app.use(VueAxios, axios)
 
 registerPlugins(app)
 
