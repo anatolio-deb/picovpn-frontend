@@ -10,18 +10,12 @@
     <v-row>
       <v-col cols="5"></v-col>
       <v-col cols="1">
-        <v-btn
-          rounded="xl"
-          size="large"
-          color="indigo-lighten-4"
-          variant="tonal"
-          @click="clickAlert"
-        >
+        <v-btn rounded="xl" size="large" color="indigo-lighten-4" variant="tonal" @click="toTry">
           Try
         </v-btn>
       </v-col>
       <v-col cols="6">
-        <v-btn rounded="xl" size="large" color="cyan-lighten-4" variant="tonal">
+        <v-btn rounded="xl" size="large" color="cyan-lighten-4" variant="tonal" @click="toBuy">
           Buy
         </v-btn>
       </v-col>
@@ -34,7 +28,10 @@ import { useRoute, useRouter } from "vue-router";
 const route = useRoute();
 const router = useRouter();
 
-function clickAlert() {
+function toTry() {
   router.push("/try");
+}
+function toTry() {
+  router.push("/buy");
 }
 </script>
