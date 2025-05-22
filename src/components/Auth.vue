@@ -5,7 +5,7 @@ import axios from 'axios'
 
 onMounted(() => {
     const initDataRaw = retrieveRawInitData()
-    axios.post('https://picovpn.ru/api/auth:3000', null, {
+    axios.post('https://picovpn.ru:3000/api/auth', null, {
         headers: {
             Authorization: `tma ${initDataRaw}`
         }
