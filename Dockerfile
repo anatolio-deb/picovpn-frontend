@@ -15,5 +15,6 @@ RUN apt install certbot python3-certbot-nginx -y
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 COPY ./nginx/privkey.pem /etc/nginx/privkey.pem
 COPY ./nginx/fullchain.pem /etc/nginx/fullchain.pem
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;", "-c", "/app/nginx/nginx.conf"]
+CMD ["nginx", "-g", "daemon off;", "-c", "/etc/nginx/nginx.conf"]
