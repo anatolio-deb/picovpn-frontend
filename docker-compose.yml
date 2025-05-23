@@ -36,10 +36,8 @@ services:
     # environment:
     #   - TG_BOT_TOKEN=7602027535:AAGrPptEC__CbwGqT-6vFpc-SdnEBAAtiSY
     volumes:
-      - ./nginx/picovpn.ru:/etc/nginx/nginx.conf:ro
-      - ./nginx/fullchain.pem:/etc/nginx/fullchain.pem:ro
-      - ./nginx/privkey.pem:/etc/nginx/privkey.pem:ro
-      # - .:/code
+      - ./nginx/conf/:/etc/nginx/conf.d/:ro
+      - ./certbot/www/:/var/www/certbot/:ro      # - .:/code
       # - /etc/letsencrypt/live/picovpn.ru/fullchain.pem:/etc/letsencrypt/live/picovpn.ru/fullchain.pem
     # depends_on:
     #   - traefik
@@ -51,6 +49,17 @@ services:
     #   - "traefik.http.routers.whoami.tls.certresolver=lets-encr"
     networks:
       - frontend
+      - backend
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
+    networks:
       - backend
 networks:
   frontend:
