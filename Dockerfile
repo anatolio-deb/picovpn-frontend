@@ -10,7 +10,7 @@ RUN npm run build
 # production stage
 FROM nginx:stable-alpine as production-stage
 RUN apk update
-RUN apk install certbot python3-certbot-nginx
+RUN apk add certbot python3-certbot-nginx
 RUN certbot --nginx -d picovpn.ru -d www.picovpn.ru
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE 80
