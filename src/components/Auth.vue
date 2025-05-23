@@ -2,10 +2,11 @@
 import { retrieveRawInitData } from '@telegram-apps/sdk'
 import { onMounted } from 'vue'
 import axios from 'axios'
+import { apiUrl } from 'env';
 
 onMounted(() => {
     const initDataRaw = retrieveRawInitData()
-    axios.post('https://picovpn.ru/api/auth', null, {
+    axios.post(`https://${apiUrl}/auth`, null, {
         headers: {
             Authorization: `tma ${initDataRaw}`
         }
@@ -16,7 +17,7 @@ onMounted(() => {
     // fetch('https://picovpn.ru/api/auth', {
     //     method: 'POST',
     //     headers: {
-    //         Authorization: `tma ${initDataRaw}`
+    //         Authorization: `tma ${ initDataRaw }`
     //     },
     // });
 })
