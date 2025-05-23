@@ -35,8 +35,11 @@ services:
     # working_dir: /app
     # environment:
     #   - TG_BOT_TOKEN=7602027535:AAGrPptEC__CbwGqT-6vFpc-SdnEBAAtiSY
-    # volumes:
-    #   - .:/code
+    volumes:
+      - ./nginx/picovpn.ru:/etc/nginx/nginx.conf:ro
+      - ./nginx/fullchain.pem:/etc/nginx/fullchain.pem:ro
+      - ./nginx/privkey.pem:/etc/nginx/privkey.pem:ro
+      # - .:/code
       # - /etc/letsencrypt/live/picovpn.ru/fullchain.pem:/etc/letsencrypt/live/picovpn.ru/fullchain.pem
     depends_on:
       - traefik
