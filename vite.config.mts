@@ -83,6 +83,7 @@ export default defineConfig({
     ],
   },
   server: {
+    allowedHosts:["ced9-66-151-35-83.ngrok-free.app", "*"],
     port: 3000,
   },
   css: {
