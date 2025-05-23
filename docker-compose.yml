@@ -15,8 +15,8 @@ services:
       # - /etc/letsencrypt/options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf:ro
       # - /etc/letsencrypt/ssl-dhparams.pem:/etc/letsencrypt/ssl-dhparams.pem:ro
     ports:
-      - 80
-      - 443
+      - 80:80
+      - 443:443
     command: nginx -g 'daemon off;'
 networks:
   frontend:
