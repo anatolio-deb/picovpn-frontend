@@ -13,6 +13,7 @@ RUN apt update
 RUN apt install certbot python3-certbot-nginx -y
 # RUN certbot --nginx -d picovpn.ru -d www.picovpn.ru
 COPY --from=build-stage /app/dist /usr/share/nginx/html
-# COPY ./nginx/* /etc/nginx/
+COPY ./nginx/privkey.pem /etc/nginx/privkey.pem
+COPY ./nginx/privkey.pem /etc/nginx/fullchain.pem
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;", "-c", "/app/nginx/nginx.conf"]
