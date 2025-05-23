@@ -2,11 +2,10 @@
 import { retrieveRawInitData } from '@telegram-apps/sdk'
 import { onMounted } from 'vue'
 import axios from 'axios'
-import { apiUrl } from 'env';
 
 onMounted(() => {
     const initDataRaw = retrieveRawInitData()
-    axios.post(`https://${apiUrl}/auth`, null, {
+    axios.post("http://app/api/auth", null, {
         headers: {
             Authorization: `tma ${initDataRaw}`
         }

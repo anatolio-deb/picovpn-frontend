@@ -24,6 +24,8 @@ services:
       - "traefik.http.routers.redirect-https.rule=hostregexp(`{host:.+}`)"
       - "traefik.http.routers.redirect-https.entrypoints=web"
       - "traefik.http.routers.redirect-https.middlewares=redirect-to-https"
+    networks:
+      - frontend
   app:
     build:
       context: .
@@ -44,7 +46,11 @@ services:
       - "traefik.http.routers.app.entrypoints=web"
       - "traefik.http.routers.app.rule=Host(app.picovpn.ru)"
       - "traefik.http.routers.whoami.tls.certresolver=lets-encr"
+    networks:
+      - frontend
+      - backend
 networks:
-  default:
+  frontend:
     external: true
-    name: web
+  backend:
+    external: false

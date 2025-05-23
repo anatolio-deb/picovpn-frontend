@@ -1,10 +1,10 @@
 # build stage
 FROM node:lts-alpine as build-stage
 ENV API_HOST="api"
+RUN npm install -g pnpm@latest-10
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
 COPY . .
+RUN pnpm install
 RUN npm run build
 
 # production stage
