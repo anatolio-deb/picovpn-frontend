@@ -9,7 +9,7 @@ services:
       - frontend
       - backend
     volumes:
-      - /etc/nginx/sites-enabled/default:/etc/nginx/sites-enabled/default:ro
+      # - /etc/nginx/sites-enabled/default:/etc/nginx/sites-enabled/default:ro
       - /etc/letsencrypt/live/picovpn.ru/fullchain.pem:/etc/letsencrypt/live/picovpn.ru/fullchain.pem:ro
       - /etc/letsencrypt/live/picovpn.ru/privkey.pem:/etc/letsencrypt/live/picovpn.ru/privkey.pem:ro
       - /etc/letsencrypt/options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf:ro
