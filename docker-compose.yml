@@ -41,8 +41,8 @@ services:
       - ./nginx/privkey.pem:/etc/nginx/privkey.pem:ro
       # - .:/code
       # - /etc/letsencrypt/live/picovpn.ru/fullchain.pem:/etc/letsencrypt/live/picovpn.ru/fullchain.pem
-    depends_on:
-      - traefik
+    # depends_on:
+    #   - traefik
     # command: go run /code/main.go
     # labels:
     #   - "traefik.enable=true"
