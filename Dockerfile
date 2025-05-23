@@ -11,7 +11,7 @@ RUN npm run build
 FROM nginx:latest as production-stage
 RUN apt update
 RUN apt install certbot python3-certbot-nginx -y
-RUN certbot --nginx -d picovpn.ru -d www.picovpn.ru
+# RUN certbot --nginx -d picovpn.ru -d www.picovpn.ru
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;", "-c", "/etc/nginx/nginx.conf"]
