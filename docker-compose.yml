@@ -1,65 +1,12 @@
 services:
-  # traefik:
-    # image: "traefik:v2.1"
-    # container_name: "traefik"
-    # hostname: "traefik"
-    # # env_file:
-    # #   - .env
-    # ports:
-    #   - "80:80"
-    #   - "443:443"
-    #   # - "8080:8080"
-    # volumes:
-    #   - "/var/run/docker.sock:/var/run/docker.sock:ro"
-    #   - "./traefik.yml:/opt/traefik.yml:ro"
-    #   - "./acme.json:/opt/acme.json"
-    # labels:
-    #   - "traefik.enable=true"
-    #   ## DNS CHALLENGE
-    #   - "traefik.http.routers.traefik.tls.certresolver=lets-encr"
-    #   - "traefik.http.routers.traefik.tls.domains[0].main=*.picovpn.ru"
-    #   - "traefik.http.routers.traefik.tls.domains[0].sans=picovpn.ru"
-    #   ## HTTP REDIRECT
-    #   - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-    #   - "traefik.http.routers.redirect-https.rule=hostregexp(`{host:.+}`)"
-    #   - "traefik.http.routers.redirect-https.entrypoints=web"
-    #   - "traefik.http.routers.redirect-https.middlewares=redirect-to-https"
-    # networks:
-    #   - frontend
   app:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: "app"
     hostname: "app"
-    # working_dir: /app
-    # environment:
-    #   - TG_BOT_TOKEN=7602027535:AAGrPptEC__CbwGqT-6vFpc-SdnEBAAtiSY
-    volumes:
-      - ./nginx/conf/:/etc/nginx/conf.d/:ro
-      - ./certbot/www/:/var/www/certbot/:ro      # - .:/code
-      # - /etc/letsencrypt/live/picovpn.ru/fullchain.pem:/etc/letsencrypt/live/picovpn.ru/fullchain.pem
-    # depends_on:
-    #   - traefik
-    command: nginx -g daemon off -c /etc/nginx/nginx.conf
-    # labels:
-    #   - "traefik.enable=true"
-    #   - "traefik.http.routers.app.entrypoints=web"
-    #   - "traefik.http.routers.app.rule=Host(app.picovpn.ru)"
-    #   - "traefik.http.routers.whoami.tls.certresolver=lets-encr"
     networks:
       - frontend
-      - backend
-    ports:
-      - 80:80
-      - 443:443
-    restart: always
-  certbot:
-    image: certbot/certbot:latest
-    volumes:
-      - ./certbot/www/:/var/www/certbot/:rw
-      - ./certbot/conf/:/etc/letsencrypt/:rw
-    networks:
       - backend
 networks:
   frontend:
