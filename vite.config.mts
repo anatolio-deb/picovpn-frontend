@@ -83,7 +83,7 @@ export default defineConfig({
     ],
   },
   server: {
-    // allowedHosts:["*"],
+    allowedHosts:["traefik"],
     port: 3000,
   },
   css: {
