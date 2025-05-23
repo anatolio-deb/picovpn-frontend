@@ -1,31 +1,31 @@
 services:
-  traefik:
-    image: "traefik:v2.1"
-    container_name: "traefik"
-    hostname: "traefik"
-    # env_file:
-    #   - .env
-    ports:
-      - "80:80"
-      - "443:443"
-      # - "8080:8080"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
-      - "./traefik.yml:/opt/traefik.yml:ro"
-      - "./acme.json:/opt/acme.json"
-    labels:
-      - "traefik.enable=true"
-      ## DNS CHALLENGE
-      - "traefik.http.routers.traefik.tls.certresolver=lets-encr"
-      - "traefik.http.routers.traefik.tls.domains[0].main=*.picovpn.ru"
-      - "traefik.http.routers.traefik.tls.domains[0].sans=picovpn.ru"
-      ## HTTP REDIRECT
-      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-      - "traefik.http.routers.redirect-https.rule=hostregexp(`{host:.+}`)"
-      - "traefik.http.routers.redirect-https.entrypoints=web"
-      - "traefik.http.routers.redirect-https.middlewares=redirect-to-https"
-    networks:
-      - frontend
+  # traefik:
+    # image: "traefik:v2.1"
+    # container_name: "traefik"
+    # hostname: "traefik"
+    # # env_file:
+    # #   - .env
+    # ports:
+    #   - "80:80"
+    #   - "443:443"
+    #   # - "8080:8080"
+    # volumes:
+    #   - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    #   - "./traefik.yml:/opt/traefik.yml:ro"
+    #   - "./acme.json:/opt/acme.json"
+    # labels:
+    #   - "traefik.enable=true"
+    #   ## DNS CHALLENGE
+    #   - "traefik.http.routers.traefik.tls.certresolver=lets-encr"
+    #   - "traefik.http.routers.traefik.tls.domains[0].main=*.picovpn.ru"
+    #   - "traefik.http.routers.traefik.tls.domains[0].sans=picovpn.ru"
+    #   ## HTTP REDIRECT
+    #   - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+    #   - "traefik.http.routers.redirect-https.rule=hostregexp(`{host:.+}`)"
+    #   - "traefik.http.routers.redirect-https.entrypoints=web"
+    #   - "traefik.http.routers.redirect-https.middlewares=redirect-to-https"
+    # networks:
+    #   - frontend
   app:
     build:
       context: .
@@ -41,11 +41,11 @@ services:
     depends_on:
       - traefik
     # command: go run /code/main.go
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.app.entrypoints=web"
-      - "traefik.http.routers.app.rule=Host(app.picovpn.ru)"
-      - "traefik.http.routers.whoami.tls.certresolver=lets-encr"
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.app.entrypoints=web"
+    #   - "traefik.http.routers.app.rule=Host(app.picovpn.ru)"
+    #   - "traefik.http.routers.whoami.tls.certresolver=lets-encr"
     networks:
       - frontend
       - backend
