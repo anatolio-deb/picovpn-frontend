@@ -1,7 +1,8 @@
 <template>
   <v-container>
-    <Label asset="@/assets/logo.png" text1="Welcome to" text2="PicoVPN">
-    </Label>
+    <v-img class="mb-4" height="150" src="@/assets/logo.png" />
+    <header text1="Welcome to" text2="PicoVPN">
+    </header>
     <v-row>
       <v-col cols=" 5"></v-col>
       <v-col cols="1">
@@ -22,7 +23,7 @@
 import { useRoute, useRouter } from "vue-router";
 // import Label from "../componenets/Label.vue";
 // import Logo from "../components/Logo";
-import Label from "@/components/Label.vue"
+import header from "@/components/header.vue"
 const route = useRoute();
 const router = useRouter();
 

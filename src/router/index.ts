@@ -9,10 +9,16 @@ import { createRouter, createWebHistory } from "vue-router/auto";
 import { setupLayouts } from "virtual:generated-layouts";
 import { routes } from "vue-router/auto-routes";
 import auth from "@/layouts/auth.vue";
+import home from "@/layouts/home.vue";
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [...setupLayouts(routes), { path: "/try", component: auth }],
+  routes: [
+    ...setupLayouts(routes),
+    // { path: "/", component: home },
+    { path: "/try", component: auth },
+    ],
 });
 
 // Workaround for https://github.com/vitejs/vite/issues/11804
