@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import Label from "./Label.vue";
+// import Label from "./Label.vue";
 
 const form = ref(false);
 const email = ref(null);
