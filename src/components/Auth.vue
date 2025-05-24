@@ -5,7 +5,7 @@ import axios from 'axios'
 
 onMounted(() => {
     const initDataRaw = retrieveRawInitData()
-    axios.post("http://app/api/auth", null, {
+    axios.post("http://api:3000/auth", null, {
         headers: {
             Authorization: `tma ${initDataRaw}`
         }
