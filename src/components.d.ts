@@ -8,12 +8,12 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Auth: typeof import('./layouts/Auth.vue')['default']
+    Auth: typeof import('./layouts/auth.vue')['default']
     Label: typeof import('./components/Label.vue')['default']
     Logo: typeof import('./components/Label.vue')['default']
-    Root: typeof import('./components/Root.vue')['default']
+    Root: typeof import('./components/home.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Try: typeof import('./components/Try.vue')['default']
+    Try: typeof import('./components/try.vue')['default']
   }
 }
