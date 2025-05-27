@@ -14,6 +14,7 @@
   "dependencies": {
     "@fontsource/roboto": "5.2.5",
     "@mdi/font": "7.4.47",
+    "@telegram-apps/bridge": "^2.8.2",
     "@telegram-apps/sdk": "^3.10.0",
     "axios": "^1.9.0",
     "vue": "^3.5.13",

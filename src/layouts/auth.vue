@@ -32,6 +32,7 @@ import { retrieveRawInitData } from '@telegram-apps/sdk'
 import { onMounted } from 'vue'
 import axios from 'axios'
 import { ref } from "vue";
+import { mockTelegramEnv } from '@telegram-apps/bridge'
 
 const form = ref(false);
 // const email = ref(null);
@@ -64,7 +65,12 @@ function passwordConfirmed(v: any) {
 
 // const props = defineProps(['respData'])
 
+onBeforeMount(() => {
+    mockTelegramEnv();
+});
+
 onMounted(() => {
+
     const initDataRaw = retrieveRawInitData()
     console.log(initDataRaw)
     axios.post("http://api:5000/api/auth", null, {
