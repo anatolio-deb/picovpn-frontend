@@ -46,7 +46,7 @@ function onSubmit() {
     // if (!form.value) return;
     if (password.value != passwordConfirmation.value) return;
     else loading.value = true;
-    axios.post("http://picovpn.ru:8080/api/users", {
+    axios.post("https://picovpn.ru:8080/api/users", {
         Username: username,
     }, {
         headers: {
@@ -75,7 +75,7 @@ onBeforeMount(() => {
 
 onMounted(() => {
     initDataRaw = retrieveRawInitData()
-    axios.post("http://picovpn.ru:8080/api/auth", null, {
+    axios.post("https://picovpn.ru:8080/api/auth", null, {
         headers: {
             Authorization: `tma ${initDataRaw}`
         }
