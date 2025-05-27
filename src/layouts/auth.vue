@@ -55,17 +55,17 @@ function passwordConfirmed(v: any) {
     );
 }
 
-const props = defineProps(['respData'])
+// const props = defineProps(['respData'])
 
 onMounted(() => {
     const initDataRaw = retrieveRawInitData()
-    var respData: any
+    // var respData: any
     axios.post("http://api:3000/api/auth", null, {
         headers: {
             Authorization: `tma ${initDataRaw}`
         }
     }).then((response) => {
-        alert(respData)
+        alert(response.data)
     })
 
     // fetch('https://picovpn.ru/api/auth', {
