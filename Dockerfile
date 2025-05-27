@@ -1,11 +1,8 @@
 # build stage
 FROM arm64v8/node as build-stage
-RUN corepack enable && corepack prepare pnpm@latest --activate
-ENV PNPM_HOME=/usr/local/bin
-RUN pnpm add --global @upleveled/preflight@latest
 WORKDIR /app
 COPY . .
-RUN pnpm install
+RUN npm install
 RUN npm run build
 
 # production stage
