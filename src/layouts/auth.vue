@@ -65,7 +65,7 @@ onMounted(() => {
             Authorization: `tma ${initDataRaw}`
         }
     }).then((response) => {
-        console.log(response.data)
+        alert(respData)
     })
 
     // fetch('https://picovpn.ru/api/auth', {
