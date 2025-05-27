@@ -44,7 +44,13 @@ function onSubmit() {
     // if (!form.value) return;
     if (password.value != passwordConfirmation.value) return;
     else loading.value = true;
-    setTimeout(() => (loading.value = false), 2000);
+    axios.post("http://api:3000/api/users", {
+        Username: props.username.value,
+    }, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
 }
 function required(v: any) {
     return !!v || "Field is required";
