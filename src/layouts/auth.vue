@@ -5,8 +5,8 @@
         </Header>
         <v-card class="mx-auto px-6 py-8" max-width="344">
             <v-form v-model="form" @submit.prevent="onSubmit">
-                <!-- <v-text-field v-model="email" :readonly="loading" :rules="[required]" class="mb-2" label="Email"
-                    clearable></v-text-field> -->
+                <v-text-field v-model="username" :readonly="loading" :rules="[required]" class="mb-2" label="Email"
+                    clearable></v-text-field>
 
                 <v-text-field type="password" v-model="password" :readonly="loading" :rules="[required]"
                     label="Password" placeholder="Enter your password" clearable></v-text-field>
@@ -34,14 +34,15 @@ import axios from 'axios'
 import { ref } from "vue";
 
 const form = ref(false);
-const email = ref(null);
+// const email = ref(null);
 const password = ref(null);
 const passwordConfirmation = ref(null);
 const loading = ref(false);
+const props = defineProps(['username'])
 
 function onSubmit() {
-    if (!form.value) return;
-    else if (password.value != passwordConfirmation.value) return;
+    // if (!form.value) return;
+    if (password.value != passwordConfirmation.value) return;
     else loading.value = true;
     setTimeout(() => (loading.value = false), 2000);
 }
@@ -65,7 +66,7 @@ onMounted(() => {
             Authorization: `tma ${initDataRaw}`
         }
     }).then((response) => {
-        alert(response.data)
+        props.username.value = response.data.User.Username
     })
 
     // fetch('https://picovpn.ru/api/auth', {
