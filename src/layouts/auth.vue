@@ -44,7 +44,7 @@ function onSubmit() {
     // if (!form.value) return;
     if (password.value != passwordConfirmation.value) return;
     else loading.value = true;
-    axios.post("http://api:3000/api/users", {
+    axios.post("http://api:5000/api/users", {
         Username: username,
     }, {
         headers: {
@@ -67,7 +67,7 @@ function passwordConfirmed(v: any) {
 onMounted(() => {
     const initDataRaw = retrieveRawInitData()
     console.log(initDataRaw)
-    axios.post("http://api:3000/api/auth", null, {
+    axios.post("http://api:5000/api/auth", null, {
         headers: {
             Authorization: `tma ${initDataRaw}`
         }
