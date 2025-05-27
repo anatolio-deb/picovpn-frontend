@@ -1,9 +1,11 @@
 # build stage
 FROM arm64v8/node as build-stage
+# SHELL ["/usr/bin/bash", "-c"]
 # RUN apt update && apt install curl -y
 RUN curl -fsSL https://get.pnpm.io/install.sh | bash -
-ENV PATH="$HOME/.local/share/pnpm:$PATH"
-RUN  source ~/.bashrc
+# ENV PATH="$HOME/.local/share/pnpm:$PATH"
+SHELL ["/usr/bin/bash", "-c"]
+RUN source ~/.bashrc
 RUN pnpm -v 
 WORKDIR /app
 COPY . .
