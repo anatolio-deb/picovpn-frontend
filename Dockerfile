@@ -1,9 +1,9 @@
 # build stage
 FROM arm64v8/node as build-stage
+RUN npm install -g pnpm@latest-10RUN
 WORKDIR /app
-COPY . ./app
-# SHELL ["/usr/bin/bash", "-c"]
-RUN npm install
+COPY . /app
+RUN pnpm install
 RUN npm run build
 
 # production stage
