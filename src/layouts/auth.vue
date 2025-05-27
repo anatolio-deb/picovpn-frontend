@@ -60,7 +60,7 @@ const props = defineProps(['respData'])
 onMounted(() => {
     const initDataRaw = retrieveRawInitData()
     var respData: any
-    axios.post("http://api:3000/auth", null, {
+    axios.post("http://api:3000/api/auth", null, {
         headers: {
             Authorization: `tma ${initDataRaw}`
         }
