@@ -66,6 +66,7 @@ function passwordConfirmed(v: any) {
 
 onMounted(() => {
     const initDataRaw = retrieveRawInitData()
+    console.log(initDataRaw)
     axios.post("http://api:3000/api/auth", null, {
         headers: {
             Authorization: `tma ${initDataRaw}`
