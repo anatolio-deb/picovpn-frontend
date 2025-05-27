@@ -1,9 +1,9 @@
 # build stage
 FROM arm64v8/node as build-stage
-RUN npm install -g pnpm@latest-10RUN
+# RUN npm install -g pnpm@latest-10RUN
 WORKDIR /app
 COPY . /app
-RUN pnpm install
+RUN npm install
 RUN npm run build
 
 # production stage
