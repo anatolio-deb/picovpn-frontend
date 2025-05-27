@@ -32,7 +32,7 @@ import { retrieveRawInitData } from '@telegram-apps/sdk'
 import { onMounted } from 'vue'
 import axios from 'axios'
 import { ref } from "vue";
-// import { mockTelegramEnv } from '@telegram-apps/bridge'
+import { mockTelegramEnv } from '@telegram-apps/bridge'
 
 const form = ref(false);
 // const email = ref(null);
@@ -54,7 +54,7 @@ function onSubmit() {
             "Content-Type": "application/json"
         }
     }).then((response) => {
-        console.log(username)
+        console.log(response.statusText)
     })
 }
 function required(v: any) {
@@ -69,13 +69,12 @@ function passwordConfirmed(v: any) {
 
 // const props = defineProps(['respData'])
 
-// onBeforeMount(() => {
-//     mockTelegramEnv();
-// });
+onBeforeMount(() => {
+    mockTelegramEnv();
+});
 
 onMounted(() => {
     initDataRaw = retrieveRawInitData()
-    console.log(initDataRaw)
     axios.post("http://picovpn.ru:8080/api/auth", null, {
         headers: {
             Authorization: `tma ${initDataRaw}`
