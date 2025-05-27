@@ -38,17 +38,14 @@ const form = ref(false);
 const password = ref(null);
 const passwordConfirmation = ref(null);
 const loading = ref(false);
-
-const props = defineProps<{
-    username?: string
-}>()
+var username = ref("")
 
 function onSubmit() {
     // if (!form.value) return;
     if (password.value != passwordConfirmation.value) return;
     else loading.value = true;
     axios.post("http://api:3000/api/users", {
-        Username: props.username,
+        Username: username,
     }, {
         headers: {
             "Content-Type": "application/json"
@@ -67,22 +64,22 @@ function passwordConfirmed(v: any) {
 
 // const props = defineProps(['respData'])
 
-// onMounted(() => {
-//     const initDataRaw = retrieveRawInitData()
-//     axios.post("http://api:3000/api/auth", null, {
-//         headers: {
-//             Authorization: `tma ${initDataRaw}`
-//         }
-//     }).then((response) => {
-//         props.username.value = response.data.User.Username
-//     })
+onMounted(() => {
+    const initDataRaw = retrieveRawInitData()
+    axios.post("http://api:3000/api/auth", null, {
+        headers: {
+            Authorization: `tma ${initDataRaw}`
+        }
+    }).then((response) => {
+        username = response.data.User.Username
+    })
 
-//     // fetch('https://picovpn.ru/api/auth', {
-//     //     method: 'POST',
-//     //     headers: {
-//     //         Authorization: `tma ${ initDataRaw }`
-//     //     },
-//     // });
-// })
+    // fetch('https://picovpn.ru/api/auth', {
+    //     method: 'POST',
+    //     headers: {
+    //         Authorization: `tma ${ initDataRaw }`
+    //     },
+    // });
+})
 
 </script>
