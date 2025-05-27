@@ -1,8 +1,10 @@
 # build stage
 FROM arm64v8/node as build-stage
-RUN npm install --global corepack@latest
-RUN corepack enable pnpm
-RUN pnpm -v 
+SHELL ["/bin/bash", "-c"]
+RUN npm install --global pnpm \
+    && SHELL=bash pnpm setup \
+    && source /root/.bashrc
+RUN pnpm -v
 WORKDIR /app
 COPY . .
 RUN pnpm install
