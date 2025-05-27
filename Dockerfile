@@ -1,5 +1,5 @@
 # build stage
-FROM arm64v8/node as build-stage
+FROM node:lts-alpine as build-stage
 RUN npm install -g pnpm@latest-10RUN
 WORKDIR /app
 COPY . /app
@@ -7,7 +7,7 @@ RUN pnpm install
 RUN npm run build
 
 # production stage
-FROM arm64v8/nginx as production-stage
+FROM nginx:latest as production-stage
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
