@@ -1,8 +1,8 @@
 # build stage
 FROM arm64v8/node as build-stage
 WORKDIR /app
-COPY . .
-SHELL ["/usr/bin/bash", "-c"]
+COPY . ./app
+# SHELL ["/usr/bin/bash", "-c"]
 RUN npm install
 RUN npm run build
 
