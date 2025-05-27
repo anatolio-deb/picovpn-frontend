@@ -1,10 +1,8 @@
 # build stage
 FROM arm64v8/node as build-stage
-SHELL ["/bin/bash", "-c"]
-RUN npm install --global pnpm \
-    && SHELL=bash pnpm setup \
-    && source /root/.bashrc
-RUN pnpm -v
+RUN corepack enable && corepack prepare pnpm@latest --activate
+ENV PNPM_HOME=/usr/local/bin
+RUN pnpm add --global @upleveled/preflight@latest
 WORKDIR /app
 COPY . .
 RUN pnpm install
