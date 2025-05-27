@@ -1,5 +1,5 @@
 # build stage
-FROM node:lts-alpine as build-stage
+FROM arm64v8/node as build-stage
 RUN npm install -g pnpm@latest-10
 WORKDIR /app
 COPY . .
