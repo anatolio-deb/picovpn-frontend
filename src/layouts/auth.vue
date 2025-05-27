@@ -39,7 +39,8 @@ const form = ref(false);
 const password = ref(null);
 const passwordConfirmation = ref(null);
 const loading = ref(false);
-var username = ref("")
+var username: string | undefined = ""
+var initDataRaw: string | undefined = ""
 
 function onSubmit() {
     // if (!form.value) return;
@@ -49,8 +50,11 @@ function onSubmit() {
         Username: username,
     }, {
         headers: {
+            Authorization: `tma ${initDataRaw}`,
             "Content-Type": "application/json"
         }
+    }).then((response) => {
+        console.log(username)
     })
 }
 function required(v: any) {
@@ -70,7 +74,7 @@ function passwordConfirmed(v: any) {
 // });
 
 onMounted(() => {
-    const initDataRaw = retrieveRawInitData()
+    initDataRaw = retrieveRawInitData()
     console.log(initDataRaw)
     axios.post("http://picovpn.ru:8080/api/auth", null, {
         headers: {
