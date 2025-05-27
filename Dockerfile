@@ -1,6 +1,6 @@
 # build stage
 FROM node:lts-alpine as build-stage
-RUN npm install -g pnpm@latest-10RUN
+RUN npm install -g pnpm@latest-10
 WORKDIR /app
 COPY . /app
 RUN pnpm install
