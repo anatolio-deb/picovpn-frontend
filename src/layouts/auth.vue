@@ -28,35 +28,35 @@
 </template>
 
 <script setup lang="ts">
-import { retrieveRawInitData } from '@telegram-apps/sdk'
-import { onMounted } from 'vue'
+import { retrieveLaunchParams } from '@telegram-apps/sdk';
 import axios from 'axios'
 import { ref } from "vue";
-import { mockTelegramEnv } from '@telegram-apps/bridge'
+// import { mockTelegramEnv } from '@telegram-apps/bridge'
 
 const form = ref(false);
 // const email = ref(null);
 const password = ref(null);
 const passwordConfirmation = ref(null);
 const loading = ref(false);
-var username: string | undefined = ""
-var initDataRaw: string | undefined = ""
+const { initDataRaw } = retrieveLaunchParams();
+
+import { onMounted } from 'vue'
 
 function onSubmit() {
+    alert(initDataRaw)
     // if (!form.value) return;
-    if (password.value != passwordConfirmation.value) return;
-    else loading.value = true;
-    axios.post("https://picovpn.ru:8080/api/users", {
-        Username: username,
-        Password: password,
-    }, {
-        headers: {
-            Authorization: `tma ${initDataRaw}`,
-            "Content-Type": "application/json"
-        }
-    }).then((response) => {
-        console.log(response.statusText)
-    })
+    // if (password.value != passwordConfirmation.value) return;
+    // else loading.value = true;
+    // axios.post("https://picovpn.ru:8080/api/users", {
+    //     Password: password,
+    // }, {
+    //     headers: {
+    //         Authorization: `tma ${initDataRaw}`,
+    //         "Content-Type": "application/json"
+    //     }
+    // }).then((response) => {
+    //     console.log(response.statusText)
+    // })
 }
 function required(v: any) {
     return !!v || "Field is required";
@@ -68,21 +68,14 @@ function passwordConfirmed(v: any) {
     );
 }
 
-// const props = defineProps(['respData'])
-
-onBeforeMount(() => {
-    mockTelegramEnv();
-});
 
 onMounted(() => {
-    initDataRaw = retrieveRawInitData()
     axios.post("https://picovpn.ru:8080/api/auth", null, {
         headers: {
             Authorization: `tma ${initDataRaw}`
         }
     }).then((response) => {
-        username = response.data.User.Username
-        console.log(initDataRaw)
+        console.log(response.data)
     })
 
 
