@@ -15,28 +15,11 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import axios from 'axios'
-import { retrieveRawInitData } from '@telegram-apps/sdk';
-
-
 
 const router = useRouter();
 
 function toTry() {
-  try {
-    const initDataRaw = retrieveRawInitData();
-    axios.post("https://picovpn.ru:8080/api/auth", null, {
-      headers: {
-        Authorization: `tma ${initDataRaw}`
-      }
-    }).then((response) => {
-      console.log(response.data)
-    })
-    alert(initDataRaw)
-    // router.push("/try");
-  } catch (error) {
-    alert(error);
-  }
+  router.push("/try");
 }
 function toBuy() {
   router.push("/buy");

@@ -28,36 +28,18 @@
 </template>
 
 <script setup lang="ts">
-import { retrieveLaunchParams } from '@telegram-apps/sdk';
-// import axios from 'axios'
+import axios from 'axios'
 import { ref } from "vue";
-// import { mockTelegramEnv } from '@telegram-apps/bridge'
+import { retrieveRawInitData } from '@telegram-apps/sdk';
+import { onMounted } from 'vue'
+
 
 const form = ref(false);
-// const email = ref(null);
 const password = ref(null);
 const passwordConfirmation = ref(null);
 const loading = ref(false);
-const { initDataRaw } = retrieveLaunchParams();
+var initDataRaw: string | undefined
 
-// import { onMounted } from 'vue'
-
-function onSubmit() {
-    alert(initDataRaw)
-    // if (!form.value) return;
-    // if (password.value != passwordConfirmation.value) return;
-    // else loading.value = true;
-    // axios.post("https://picovpn.ru:8080/api/users", {
-    //     Password: password,
-    // }, {
-    //     headers: {
-    //         Authorization: `tma ${initDataRaw}`,
-    //         "Content-Type": "application/json"
-    //     }
-    // }).then((response) => {
-    //     console.log(response.statusText)
-    // })
-}
 function required(v: any) {
     return !!v || "Field is required";
 }
@@ -68,23 +50,36 @@ function passwordConfirmed(v: any) {
     );
 }
 
+function onSubmit() {
+    try {
+        axios.post("https://picovpn.ru:8080/api/auth", null, {
+            headers: {
+                Authorization: `tma ${initDataRaw}`
+            }
+        }).then((response) => {
+            console.log(response.data)
+        })
+    } catch (error) {
+        alert(error)
+    }
 
-// onMounted(() => {
-//     axios.post("https://picovpn.ru:8080/api/auth", null, {
-//         headers: {
-//             Authorization: `tma ${initDataRaw}`
-//         }
-//     }).then((response) => {
-//         console.log(response.data)
-//     })
+}
 
-
-//     // fetch('https://picovpn.ru/api/auth', {
-//     //     method: 'POST',
-//     //     headers: {
-//     //         Authorization: `tma ${ initDataRaw }`
-//     //     },
-//     // });
-// })
+onMounted(() => {
+    try {
+        initDataRaw = retrieveRawInitData();
+        alert(initDataRaw)
+    } catch (error) {
+        alert(error);
+    } finally {
+        alert(initDataRaw)
+    }
+    // fetch('https://picovpn.ru/api/auth', {
+    //     method: 'POST',
+    //     headers: {
+    //         Authorization: `tma ${ initDataRaw }`
+    //     },
+    // });
+})
 
 </script>
