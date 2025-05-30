@@ -65,24 +65,22 @@ function onSubmit() {
 }
 
 onMounted(() => {
-    initDataRaw = retrieveRawInitData();
-    axios.post("http://picovpn.ru/api/auth", null, {
-        headers: {
-            Authorization: `tma ${initDataRaw}`
+    try {
+        initDataRaw = retrieveRawInitData();
+        try {
+            axios.post("http://picovpn.ru/api/auth", null, {
+                headers: {
+                    Authorization: `tma ${initDataRaw}`
+                }
+            }).then((response) => {
+                alert(response.status)
+            })
+        } catch (error) {
+            alert(error)
         }
-    }).then((response) => {
-        alert(response.status)
-    })
-
-    // try {
-    //     try {
-
-    //     } catch (error) {
-    //         alert(error)
-    //     }
-    // } catch (error) {
-    //     console.log(error);
-    // }
+    } catch (error) {
+        console.log(error);
+    }
 
     // fetch('https://picovpn.ru/api/auth', {
     //     method: 'POST',
