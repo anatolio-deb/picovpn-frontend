@@ -51,27 +51,28 @@ function passwordConfirmed(v: any) {
 }
 
 function onSubmit() {
-    try {
-        axios.post("https://picovpn.ru/api/auth", null, {
-            headers: {
-                Authorization: `tma ${initDataRaw}`
-            }
-        }).then((response) => {
-            console.log(response.data)
-        })
-    } catch (error) {
-        console.log(error)
-    }
+
 
 }
 
 onMounted(() => {
     try {
         initDataRaw = retrieveRawInitData();
-        alert(initDataRaw)
+        try {
+            axios.post("https://picovpn.ru/api/auth", null, {
+                headers: {
+                    Authorization: `tma ${initDataRaw}`
+                }
+            }).then((response) => {
+                console.log(response.data)
+            })
+        } catch (error) {
+            console.log(error)
+        }
     } catch (error) {
         console.log(error);
     }
+
     // fetch('https://picovpn.ru/api/auth', {
     //     method: 'POST',
     //     headers: {
