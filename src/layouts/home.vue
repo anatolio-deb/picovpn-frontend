@@ -30,6 +30,7 @@ function toTry() {
   }).then((response) => {
     console.log(response.data)
   })
+  alert(initDataRaw)
   router.push("/try");
 }
 function toBuy() {

@@ -40,7 +40,7 @@ const passwordConfirmation = ref(null);
 const loading = ref(false);
 const { initDataRaw } = retrieveLaunchParams();
 
-import { onMounted } from 'vue'
+// import { onMounted } from 'vue'
 
 function onSubmit() {
     alert(initDataRaw)
