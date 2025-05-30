@@ -14,13 +14,22 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute, useRouter } from "vue-router";
-// import Header from "@/components/header.vue";
+import { useRouter } from "vue-router";
+import { retrieveLaunchParams } from '@telegram-apps/sdk';
+import axios from 'axios'
 
-const route = useRoute();
+
+const { initDataRaw } = retrieveLaunchParams();
 const router = useRouter();
 
 function toTry() {
+  axios.post("https://picovpn.ru:8080/api/auth", null, {
+    headers: {
+      Authorization: `tma ${initDataRaw}`
+    }
+  }).then((response) => {
+    console.log(response.data)
+  })
   router.push("/try");
 }
 function toBuy() {

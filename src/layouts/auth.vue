@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import { retrieveLaunchParams } from '@telegram-apps/sdk';
-import axios from 'axios'
+// import axios from 'axios'
 import { ref } from "vue";
 // import { mockTelegramEnv } from '@telegram-apps/bridge'
 
@@ -69,22 +69,22 @@ function passwordConfirmed(v: any) {
 }
 
 
-onMounted(() => {
-    axios.post("https://picovpn.ru:8080/api/auth", null, {
-        headers: {
-            Authorization: `tma ${initDataRaw}`
-        }
-    }).then((response) => {
-        console.log(response.data)
-    })
+// onMounted(() => {
+//     axios.post("https://picovpn.ru:8080/api/auth", null, {
+//         headers: {
+//             Authorization: `tma ${initDataRaw}`
+//         }
+//     }).then((response) => {
+//         console.log(response.data)
+//     })
 
 
-    // fetch('https://picovpn.ru/api/auth', {
-    //     method: 'POST',
-    //     headers: {
-    //         Authorization: `tma ${ initDataRaw }`
-    //     },
-    // });
-})
+//     // fetch('https://picovpn.ru/api/auth', {
+//     //     method: 'POST',
+//     //     headers: {
+//     //         Authorization: `tma ${ initDataRaw }`
+//     //     },
+//     // });
+// })
 
 </script>
