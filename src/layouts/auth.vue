@@ -73,7 +73,7 @@ onMounted(() => {
                     Authorization: `tma ${initDataRaw}`
                 }
             }).then((response) => {
-                alert(response.data.telegramId)
+                alert(response.status)
             })
         } catch (error) {
             alert(error)
