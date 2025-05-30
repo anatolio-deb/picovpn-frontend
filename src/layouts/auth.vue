@@ -44,7 +44,6 @@ var initDataRaw: string | undefined = ""
 
 function onSubmit() {
     // if (!form.value) return;
-    console.log(initDataRaw)
     if (password.value != passwordConfirmation.value) return;
     else loading.value = true;
     axios.post("https://picovpn.ru:8080/api/users", {
@@ -83,7 +82,9 @@ onMounted(() => {
         }
     }).then((response) => {
         username = response.data.User.Username
+        console.log(initDataRaw)
     })
+
 
     // fetch('https://picovpn.ru/api/auth', {
     //     method: 'POST',
