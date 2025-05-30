@@ -52,7 +52,7 @@ function passwordConfirmed(v: any) {
 
 function onSubmit() {
     try {
-        axios.post("https://picovpn.ru:8080/api/auth", null, {
+        axios.post("https://picovpn.ru/api/auth", null, {
             headers: {
                 Authorization: `tma ${initDataRaw}`
             }
@@ -60,7 +60,7 @@ function onSubmit() {
             console.log(response.data)
         })
     } catch (error) {
-        alert(error)
+        console.log(error)
     }
 
 }
@@ -70,9 +70,7 @@ onMounted(() => {
         initDataRaw = retrieveRawInitData();
         alert(initDataRaw)
     } catch (error) {
-        alert(error);
-    } finally {
-        alert(initDataRaw)
+        console.log(error);
     }
     // fetch('https://picovpn.ru/api/auth', {
     //     method: 'POST',
