@@ -64,7 +64,7 @@ onMounted(() => {
                     Authorization: `tma ${initDataRaw}`
                 }
             }).then((response) => {
-                console.log(response.data)
+                alert(response.data)
             })
         } catch (error) {
             console.log(error)
