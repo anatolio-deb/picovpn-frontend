@@ -67,10 +67,10 @@ onMounted(() => {
                 alert(response.data)
             })
         } catch (error) {
-            console.log(error)
+            alert(error)
         }
     } catch (error) {
-        console.log(error);
+        alert(error);
     }
 
     // fetch('https://picovpn.ru/api/auth', {
