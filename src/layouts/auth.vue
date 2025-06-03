@@ -67,6 +67,9 @@ function onSubmit() {
 onMounted(() => {
     try {
         initDataRaw = retrieveRawInitData();
+    } catch (error) {
+        console.log(error);
+    } finally {
         try {
             axios.post("https://picovpn.ru:8080/api/auth", null, {
                 headers: {
@@ -78,10 +81,9 @@ onMounted(() => {
         } catch (error) {
             alert(error)
         }
-    } catch (error) {
-        console.log(error);
-    } finally {
-        alert(initDataRaw)
+        finally {
+            alert(initDataRaw)
+        }
     }
 
     // fetch('https://picovpn.ru/api/auth', {
