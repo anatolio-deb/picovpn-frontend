@@ -54,7 +54,7 @@ function onSubmit() {
     try {
         axios.post("https://picovpn.ru:8080/api/users", null,
             {
-                headers: { Authorization: `tma ${initData}` }
+                headers: { Authorization: `X-Telegram-Data ${initData}` }
             }
         ).then((response) => {
             console.log(response.status)
@@ -74,7 +74,7 @@ onMounted(() => {
         try {
             axios.post("https://picovpn.ru:8080/api/auth", null,
                 {
-                    headers: { Authorization: `tma ${initData}` }
+                    headers: { Authorization: `X-Telegram-Data ${initData}` }
                 }
             ).then((response) => {
                 console.log(response.status)
