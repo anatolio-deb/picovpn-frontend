@@ -38,7 +38,6 @@ const form = ref(false);
 const password = ref(null);
 const passwordConfirmation = ref(null);
 const loading = ref(false);
-var initDataRaw: string | undefined
 
 function required(v: any) {
     return !!v || "Field is required";
@@ -54,7 +53,7 @@ function onSubmit() {
     try {
         axios.post("https://picovpn.ru:8080/api/users", null, {
             headers: {
-                Authorization: `tma ${initDataRaw}`
+                Authorization: `tma ${retrieveRawInitData()}`
             }
         }).then((response) => {
             console.log(response.status)
@@ -66,24 +65,15 @@ function onSubmit() {
 
 onMounted(() => {
     try {
-        initDataRaw = retrieveRawInitData();
+        axios.post("https://picovpn.ru:8080/api/auth", null, {
+            headers: {
+                Authorization: `tma ${retrieveRawInitData()}`
+            }
+        }).then((response) => {
+            console.log(response.status)
+        })
     } catch (error) {
-        console.log(error);
-    } finally {
-        try {
-            axios.post("https://picovpn.ru:8080/api/auth", null, {
-                headers: {
-                    Authorization: `tma ${initDataRaw}`
-                }
-            }).then((response) => {
-                console.log(response.status)
-            })
-        } catch (error) {
-            console.log(error)
-        }
-        finally {
-            console.log(initDataRaw)
-        }
+        console.log(error)
     }
 
     // fetch('https://picovpn.ru/api/auth', {
