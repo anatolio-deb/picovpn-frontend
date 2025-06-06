@@ -57,10 +57,10 @@ function onSubmit() {
                 Authorization: `tma ${initDataRaw}`
             }
         }).then((response) => {
-            alert(response.status)
+            console.log(response.status)
         })
     } catch (error) {
-        alert(error)
+        console.log(error)
     }
 }
 
@@ -76,13 +76,13 @@ onMounted(() => {
                     Authorization: `tma ${initDataRaw}`
                 }
             }).then((response) => {
-                alert(response.status)
+                console.log(response.status)
             })
         } catch (error) {
-            alert(error)
+            console.log(error)
         }
         finally {
-            alert(initDataRaw)
+            console.log(initDataRaw)
         }
     }
 
