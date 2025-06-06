@@ -52,7 +52,11 @@ function passwordConfirmed(v: any) {
 
 function onSubmit() {
     try {
-        axios.post("https://picovpn.ru:8080/api/users", { "tma": initData }).then((response) => {
+        axios.post("https://picovpn.ru:8080/api/users", null,
+            {
+                headers: { Authorization: `tma ${initData}` }
+            }
+        ).then((response) => {
             console.log(response.status)
         })
     } catch (error) {
@@ -68,7 +72,11 @@ onMounted(() => {
     } finally {
         console.log(initData)
         try {
-            axios.post("https://picovpn.ru:8080/api/auth", { "tma": initData }).then((response) => {
+            axios.post("https://picovpn.ru:8080/api/auth", null,
+                {
+                    headers: { Authorization: `tma ${initData}` }
+                }
+            ).then((response) => {
                 console.log(response.status)
             })
         } catch (error) {
