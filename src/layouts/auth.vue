@@ -28,6 +28,7 @@
 </template>
 
 <script setup lang="ts">
+import { init } from '@telegram-apps/sdk';
 import axios from 'axios'
 import { ref } from "vue";
 
@@ -48,17 +49,18 @@ function passwordConfirmed(v: any) {
 }
 
 function onSubmit() {
-    try {
-        axios.post("https://picovpn.ru:8080/api/users", null,
-            {
-                headers: { Authorization: `X-Telegram-Data ${JSON.stringify(localStorage.getItem("initData"))}` }
-            }
-        ).then((response) => {
-            console.log(response.status)
-        })
-    } catch (error) {
-        console.log(error)
+    var initDataRaw = localStorage.getItem("initData")
+    if (initDataRaw != null) {
+        try {
+            axios.post("https://picovpn.ru:8080/api/users", JSON.parse(initDataRaw)
+            ).then((response) => {
+                console.log(response.data)
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
+
 }
 
 
