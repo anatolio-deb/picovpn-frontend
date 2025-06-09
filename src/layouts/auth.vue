@@ -28,7 +28,6 @@
 </template>
 
 <script setup lang="ts">
-import { init } from '@telegram-apps/sdk';
 import axios from 'axios'
 import { ref } from "vue";
 
@@ -49,6 +48,7 @@ function passwordConfirmed(v: any) {
 }
 
 function onSubmit() {
+    loading.value = true
     var initDataRaw = localStorage.getItem("initData")
     if (initDataRaw != null) {
         try {
@@ -60,9 +60,6 @@ function onSubmit() {
             console.log(error)
         }
     }
-
+    loading.value = false
 }
-
-
-
 </script>
