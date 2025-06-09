@@ -30,15 +30,12 @@
 <script setup lang="ts">
 import axios from 'axios'
 import { ref } from "vue";
-import { retrieveRawInitData } from '@telegram-apps/sdk';
-import { onMounted } from 'vue'
 
 
 const form = ref(false);
 const password = ref(null);
 const passwordConfirmation = ref(null);
 const loading = ref(false);
-var initData: string | undefined = ""
 
 function required(v: any) {
     return !!v || "Field is required";
@@ -54,7 +51,7 @@ function onSubmit() {
     try {
         axios.post("https://picovpn.ru:8080/api/users", null,
             {
-                headers: { Authorization: `X-Telegram-Data ${initData}` }
+                headers: { Authorization: `X-Telegram-Data ${JSON.stringify(localStorage.getItem("initData"))}` }
             }
         ).then((response) => {
             console.log(response.status)
@@ -64,33 +61,6 @@ function onSubmit() {
     }
 }
 
-onMounted(() => {
-    try {
-        initData = retrieveRawInitData()
-    } catch (error) {
-        console.log(error)
-    } finally {
-        console.log(initData)
-        try {
-            axios.post("https://picovpn.ru:8080/api/auth", null,
-                {
-                    headers: { Authorization: `X-Telegram-Data ${initData}` }
-                }
-            ).then((response) => {
-                console.log(response.status)
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
-
-    // fetch('https://picovpn.ru/api/auth', {
-    //     method: 'POST',
-    //     headers: {
-    //         Authorization: `tma ${ initDataRaw }`
-    //     },
-    // });
-})
 
 </script>

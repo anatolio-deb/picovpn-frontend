@@ -15,8 +15,14 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
+import { retrieveRawInitData } from '@telegram-apps/sdk';
+import { onMounted } from 'vue'
+import axios from 'axios'
+
 
 const router = useRouter();
+var initData: string | undefined = ""
+
 
 function toTry() {
   router.push("/try");
@@ -24,4 +30,38 @@ function toTry() {
 function toBuy() {
   router.push("/buy");
 }
+
+onMounted(() => {
+  try {
+    initData = retrieveRawInitData()
+    axios.post("https://picovpn.ru:8080/api/auth", null,
+      {
+        headers: { Authorization: `X-Telegram-Data ${initData}` }
+      }
+    ).then((response) => {
+      if (response.status == 200) {
+        localStorage.setItem("initData", response.data)
+        try {
+          axios.post(`https://picovpn.ru:8080/api/users/${response.data.User.Id}`, null,
+            {
+              headers: { Authorization: `X-Telegram-Data ${initData}` }
+            }
+          ).then((response) => {
+            if (response.status == 200) {
+              router.push("/account")
+            } else {
+              console.log(response.data.message)
+            }
+          })
+        } catch (error) {
+          console.log(error)
+        }
+      } else {
+        console.log(response.data.message)
+      }
+    })
+  } catch (error) {
+    console.log(error)
+  }
+})
 </script>
