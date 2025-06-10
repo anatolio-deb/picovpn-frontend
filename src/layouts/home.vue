@@ -31,40 +31,40 @@ function toBuy() {
   router.push("/buy");
 }
 
-onMounted(() => {
-  try {
-    initData = retrieveRawInitData()
-    axios.post("https://picovpn.ru/api/auth", null,
-      {
-        headers: { Authorization: `X-Telegram-Data ${initData}` }
-      }
-    ).then((response) => {
-      if (response.status == 200) {
-        localStorage.setItem("initData", JSON.stringify(response.data))
-        try {
-          axios.get(`https://picovpn.ru/api/users/${response.data.user.id}`,
-            {
-              headers: {
-                Authorization: `X-Telegram-Data ${initData}`,
-              }
-            }
-          ).then((response) => {
-            console.log(response.data)
-            // if (response.status == 200) {
-            //   router.push("/account")
-            // } else {
-            //   console.log(response.data.message)
-            // }
-          })
-        } catch (error) {
-          console.log(error)
-        }
-      } else {
-        console.log(response.data.message)
-      }
-    })
-  } catch (error) {
-    console.log(error)
-  }
-})
+// onMounted(() => {
+//   try {
+//     initData = retrieveRawInitData()
+//     axios.post("https://picovpn.ru/api/auth", null,
+//       {
+//         headers: { Authorization: `X-Telegram-Data ${initData}` }
+//       }
+//     ).then((response) => {
+//       if (response.status == 200) {
+//         localStorage.setItem("initData", JSON.stringify(response.data))
+//         try {
+//           axios.get(`https://picovpn.ru/api/users/${response.data.user.id}`,
+//             {
+//               headers: {
+//                 Authorization: `X-Telegram-Data ${initData}`,
+//               }
+//             }
+//           ).then((response) => {
+//             console.log(response.data)
+//             // if (response.status == 200) {
+//             //   router.push("/account")
+//             // } else {
+//             //   console.log(response.data.message)
+//             // }
+//           })
+//         } catch (error) {
+//           console.log(error)
+//         }
+//       } else {
+//         console.log(response.data.message)
+//       }
+//     })
+//   } catch (error) {
+//     console.log(error)
+//   }
+// })
 </script>

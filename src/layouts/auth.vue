@@ -48,18 +48,18 @@ function passwordConfirmed(v: any) {
 }
 
 function onSubmit(event: Event) {
-    var initData = localStorage.getItem("initData")
-    if (initData != null) {
-        try {
-            axios.post("https://picovpn.ru/api/users", JSON.parse(initData)
-            ).then((response) => {
-                console.log(response.data)
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    } else {
-        console.log("empty init data")
-    }
+    // var initData = localStorage.getItem("initData")
+    // if (initData != null) {
+    //     try {
+    //         axios.post("https://picovpn.ru/api/users", JSON.parse(initData)
+    //         ).then((response) => {
+    //             console.log(response.data)
+    //         })
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // } else {
+    //     console.log("empty init data")
+    // }
 }
 </script>
