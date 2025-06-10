@@ -40,7 +40,7 @@ onMounted(() => {
       }
     ).then((response) => {
       if (response.status == 200) {
-        localStorage.setItem("initData", JSON.stringify(response.data))
+        localStorage.setItem("initData", initData || "");
         try {
           axios.get(`https://picovpn.ru/api/users/${response.data.user.id}`,
             {
