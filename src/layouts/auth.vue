@@ -54,7 +54,7 @@ function onSubmit(event: Event) {
             axios.post("https://picovpn.ru:8080/api/users", JSON.parse(initData),
                 {
                     headers: {
-                        "Access-Control-Allow-Origin": "https://picovpn.ru:8080/api/*"
+                        "Access-Control-Allow-Origin": "*"
                     }
                 },
             ).then((response) => {
