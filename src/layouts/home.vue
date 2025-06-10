@@ -49,12 +49,11 @@ onMounted(() => {
               }
             }
           ).then((response) => {
-            console.log(response.data)
-            // if (response.status == 200) {
-            //   router.push("/account")
-            // } else {
-            //   console.log(response.data.message)
-            // }
+            if (response.status == 200) {
+              router.push("/account")
+            } else {
+              console.log(response.data.message)
+            }
           })
         } catch (error) {
           console.log(error)
