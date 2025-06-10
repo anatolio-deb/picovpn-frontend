@@ -28,9 +28,8 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios'
 import { ref } from "vue";
-
+import apiService from "@/api/axios"
 
 const form = ref(false);
 const password = ref(null);
@@ -48,22 +47,19 @@ function passwordConfirmed(v: any) {
 }
 
 function onSubmit(event: Event) {
-    var initData = localStorage.getItem("initData")
-    if (initData != null) {
-        try {
-            axios.post("https://picovpn.ru/api/users", {
-                password: password.value,
-                password_confirmation: passwordConfirmation.value
-            }, {
-                headers: { Authorization: `X-Telegram-Data ${initData}` },
-            }).then((response) => {
-                console.log(response.data)
-            })
-        } catch (error) {
+    loading.value = true
+    apiService.postUser({
+        password: password.value,
+        password_confirmation: passwordConfirmation.value
+    })
+        .then((response) => {
+            console.log(response.data)
+        })
+        .catch((error) => {
             console.log(error)
-        }
-    } else {
-        console.log("empty init data")
-    }
+        })
+        .finally(() => {
+            loading.value = false
+        })
 }
 </script>

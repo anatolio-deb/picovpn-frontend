@@ -15,14 +15,11 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { retrieveRawInitData } from '@telegram-apps/sdk';
-import { onMounted } from 'vue'
-import axios from 'axios'
-
+import { retrieveRawInitData } from "@telegram-apps/sdk";
+import { onMounted } from "vue";
+import apiService from "@/api/axios";
 
 const router = useRouter();
-var initData: string | undefined = ""
-
 
 function toTry() {
   router.push("/try");
@@ -33,38 +30,35 @@ function toBuy() {
 
 onMounted(() => {
   try {
-    initData = retrieveRawInitData()
-    axios.post("https://picovpn.ru/api/auth", null,
-      {
-        headers: { Authorization: `X-Telegram-Data ${initData}` }
-      }
-    ).then((response) => {
-      if (response.status == 200) {
-        localStorage.setItem("initData", initData || "");
-        try {
-          axios.get(`https://picovpn.ru/api/users/${response.data.user.id}`,
-            {
-              headers: {
-                Authorization: `X-Telegram-Data ${initData}`,
-              }
-            }
-          ).then((response) => {
-            console.log(response.data)
-            // if (response.status == 200) {
-            //   router.push("/account")
+    const initData = retrieveRawInitData() || "";
+    apiService.setInitData(initData);
+  } catch (error) {
+    console.error("Failed to retrieve launch parameters:", error);
+    return;
+  }
+
+  apiService.telegramAuth()
+    .then((response) => {
+      if (response.status === 200) {
+        // localStorage.setItem("initData", initData);
+        apiService.getUser(response.data.user.id)
+          .then((response) => {
+            console.log(response.data);
+            // if (response.status === 200) {
+            //   router.push("/account");
             // } else {
-            //   console.log(response.data.message)
+            //   console.log(response.data.message);
             // }
           })
-        } catch (error) {
-          console.log(error)
-        }
+          .catch((error) => {
+            console.log(error);
+          });
       } else {
-        console.log(response.data.message)
+        console.log(response.data.message);
       }
     })
-  } catch (error) {
-    console.log(error)
-  }
-})
+    .catch((error) => {
+      console.log(error);
+    });
+});
 </script>
