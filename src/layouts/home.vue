@@ -46,7 +46,7 @@ onMounted(() => {
             {
               headers: {
                 Authorization: `X-Telegram-Data ${initData}`,
-                "Access-Control-Allow-Origin": "https://picovpn.ru:8080/api/users/"
+                "Access-Control-Allow-Origin": "https://picovpn.ru:8080/api/*"
               }
             }
           ).then((response) => {

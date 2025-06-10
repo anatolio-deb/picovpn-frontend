@@ -51,7 +51,12 @@ function onSubmit(event: Event) {
     var initData = localStorage.getItem("initData")
     if (initData != null) {
         try {
-            axios.post("https://picovpn.ru:8080/api/users", JSON.parse(initData)
+            axios.post("https://picovpn.ru:8080/api/users", JSON.parse(initData),
+                {
+                    headers: {
+                        "Access-Control-Allow-Origin": "https://picovpn.ru:8080/api/*"
+                    }
+                },
             ).then((response) => {
                 console.log(response.data)
             })
