@@ -28,6 +28,7 @@
 </template>
 
 <script setup lang="ts">
+import { initData } from '@telegram-apps/sdk';
 import axios from 'axios'
 import { ref } from "vue";
 
@@ -50,6 +51,7 @@ function passwordConfirmed(v: any) {
 function onSubmit(event: Event) {
     loading.value = true
     var initDataRaw = localStorage.getItem("initData")
+    console.log(initData)
     if (initDataRaw != null) {
         try {
             axios.post("https://picovpn.ru:8080/api/users", JSON.parse(initDataRaw)
