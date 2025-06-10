@@ -42,7 +42,7 @@ onMounted(() => {
       if (response.status == 200) {
         localStorage.setItem("initData", JSON.stringify(response.data))
         try {
-          axios.post(`https://picovpn.ru:8080/api/users/${response.data.User.Id}`, null,
+          axios.post(`https://picovpn.ru:8080/api/users/${response.data.user.id}`, null,
             {
               headers: { Authorization: `X-Telegram-Data ${initData}` }
             }
