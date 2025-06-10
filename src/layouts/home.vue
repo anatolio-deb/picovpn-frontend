@@ -46,7 +46,6 @@ onMounted(() => {
             {
               headers: {
                 Authorization: `X-Telegram-Data ${initData}`,
-                "Access-Control-Allow-Origin": "*"
               }
             }
           ).then((response) => {
