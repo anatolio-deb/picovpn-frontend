@@ -51,7 +51,13 @@ function onSubmit(event: Event) {
     var initData = localStorage.getItem("initData")
     if (initData != null) {
         try {
-            axios.post("https://picovpn.ru/api/users", JSON.parse(initData)
+            axios.post("https://picovpn.ru/api/users", JSON.parse(initData), {
+                headers: { Authorization: `X-Telegram-Data ${initData}` },
+                data: {
+                    password: password.value,
+                    password_confirmation: passwordConfirmation.value
+                }
+            }
             ).then((response) => {
                 console.log(response.data)
             })
