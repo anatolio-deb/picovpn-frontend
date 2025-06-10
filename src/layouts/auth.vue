@@ -50,11 +50,10 @@ function passwordConfirmed(v: any) {
 
 function onSubmit(event: Event) {
     loading.value = true
-    var initDataRaw = localStorage.getItem("initData")
-    console.log(initData)
-    if (initDataRaw != null) {
+    var initData = localStorage.getItem("initData")
+    if (initData != null) {
         try {
-            axios.post("https://picovpn.ru:8080/api/users", JSON.parse(initDataRaw)
+            axios.post("https://picovpn.ru:8080/api/users", JSON.parse(initData)
             ).then((response) => {
                 console.log(response.data)
             })
