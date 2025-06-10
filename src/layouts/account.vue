@@ -1,5 +1,6 @@
 <template>
-{{initData}}
+    <p>Account</p>
+    {{ initData }}
 </template>
 
 <script lang="ts" setup>
