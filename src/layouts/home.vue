@@ -44,7 +44,10 @@ onMounted(() => {
         try {
           axios.post(`https://picovpn.ru:8080/api/users/${response.data.user.id}`, null,
             {
-              headers: { Authorization: `X-Telegram-Data ${initData}` }
+              headers: {
+                Authorization: `X-Telegram-Data ${initData}`,
+                "Access-Control-Allow-Origin": "https://picovpn.ru:8080/api/users/"
+              }
             }
           ).then((response) => {
             if (response.status == 200) {
