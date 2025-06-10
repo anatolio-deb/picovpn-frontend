@@ -34,7 +34,7 @@ function toBuy() {
 onMounted(() => {
   try {
     initData = retrieveRawInitData()
-    axios.post("https://picovpn.ru:8080/api/auth", null,
+    axios.post("https://picovpn.ru/api/auth", null,
       {
         headers: { Authorization: `X-Telegram-Data ${initData}` }
       }
@@ -42,7 +42,7 @@ onMounted(() => {
       if (response.status == 200) {
         localStorage.setItem("initData", JSON.stringify(response.data))
         try {
-          axios.get(`https://picovpn.ru:8080/api/users/${response.data.user.id}`,
+          axios.get(`https://picovpn.ru/api/users/${response.data.user.id}`,
             {
               headers: {
                 Authorization: `X-Telegram-Data ${initData}`,
