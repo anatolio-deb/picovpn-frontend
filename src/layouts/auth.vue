@@ -47,7 +47,7 @@ function passwordConfirmed(v: any) {
     );
 }
 
-async function onSubmit(event: Event) {
+function onSubmit(event: Event) {
     loading.value = true
     var initDataRaw = localStorage.getItem("initData")
     if (initDataRaw != null) {
@@ -59,6 +59,8 @@ async function onSubmit(event: Event) {
         } catch (error) {
             console.log(error)
         }
+    } else {
+        console.log("empty init data")
     }
     loading.value = false
 }
