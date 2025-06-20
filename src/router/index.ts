@@ -10,14 +10,16 @@ import { setupLayouts } from "virtual:generated-layouts";
 import { routes } from "vue-router/auto-routes";
 import auth from "@/layouts/auth.vue";
 import home from "@/layouts/home.vue";
+import account from "@/layouts/account.vue"
 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     ...setupLayouts(routes),
-    // { path: "/", component: home },
+    { path: "/", component: home },
     { path: "/try", component: auth },
+    { path: "/account", component: account}
     ],
 });
 

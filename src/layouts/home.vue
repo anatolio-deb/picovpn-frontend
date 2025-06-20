@@ -43,12 +43,12 @@ onMounted(() => {
         // localStorage.setItem("initData", initData);
         apiService.getUser(response.data.user.id)
           .then((response) => {
-            console.log(response.data);
-            // if (response.status === 200) {
-            //   router.push("/account");
-            // } else {
-            //   console.log(response.data.message);
-            // }
+            if (response.status === 200) {
+              localStorage.setItem("initData", response.data)
+              router.push("/account");
+            } else {
+              console.log(response.data.message);
+            }
           })
           .catch((error) => {
             console.log(error);

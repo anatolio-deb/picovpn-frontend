@@ -30,6 +30,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import apiService from "@/api/axios"
+import router from "@/router";
 
 const form = ref(false);
 const password = ref(null);
@@ -53,7 +54,9 @@ function onSubmit(event: Event) {
         password_confirmation: passwordConfirmation.value
     })
         .then((response) => {
-            console.log(response.data)
+            if (response.status === 200) {
+                router.push("/account");
+            }
         })
         .catch((error) => {
             console.log(error)
