@@ -31,9 +31,7 @@
 import { ref } from "vue";
 import apiService from "@/api/axios"
 import router from "@/router";
-import { useAppStore } from '@/stores/app'
 
-const user = useAppStore()
 const form = ref(false);
 const password = ref(null);
 const passwordConfirmation = ref(null);
@@ -57,17 +55,7 @@ function onSubmit(event: Event) {
     })
         .then((response) => {
             if (response.status === 200) {
-                user.$patch({
-                    id: response.data.user.id,
-                    username: response.data.user.username,
-                    photo_url: response.data.user.photo_url,
-                    is_bot: response.data.user.is_bot,
-                    first_name: response.data.user.first_name,
-                    last_name: response.data.user.last_name,
-                    language_code: response.data.user.language_code,
-                    is_premium: response.data.user.is_premium,
-                });
-                router.push("/account");
+                router.push("/home");
             }
         })
         .catch((error) => {
