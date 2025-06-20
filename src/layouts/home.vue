@@ -44,7 +44,7 @@ onMounted(() => {
         apiService.getUser(response.data.user.id)
           .then((response) => {
             if (response.status === 200) {
-              localStorage.setItem("initData", response.data)
+              localStorage.setItem("initData", JSON.stringify(response.data));
               router.push("/account");
             } else {
               console.log(response.data.message);
