@@ -18,6 +18,9 @@ import { useRouter } from "vue-router";
 import { retrieveRawInitData } from "@telegram-apps/sdk";
 import { onMounted } from "vue";
 import apiService from "@/api/axios";
+import { useAppStore } from '@/stores/app'
+
+const user = useAppStore()
 
 const router = useRouter();
 
@@ -40,11 +43,19 @@ onMounted(() => {
   apiService.telegramAuth()
     .then((response) => {
       if (response.status === 200) {
-        // localStorage.setItem("initData", initData);
+        user.$patch({
+          id: response.data.user.id,
+          username: response.data.user.username,
+          photo_url: response.data.user.photo_url,
+          is_bot: response.data.user.is_bot,
+          first_name: response.data.user.first_name,
+          last_name: response.data.user.last_name,
+          language_code: response.data.user.language_code,
+          is_premium: response.data.user.is_premium,
+        });
         apiService.getUser(response.data.user.id)
           .then((response) => {
             if (response.status === 200) {
-              localStorage.setItem("initData", response.data)
               router.push("/account");
             } else {
               console.log(response.data.message);

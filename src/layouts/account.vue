@@ -10,14 +10,15 @@
 </template>
 
 <script lang="ts" setup>
-const initData = localStorage.getItem("initData") || "{}";
-const parsedInitData: any = JSON.parse(initData);
+import { useAppStore } from '@/stores/app'
+
+const user = useAppStore()
 const avatar = ref("");
 const username = ref("");
 
 onMounted(() => {
-    avatar.value = parsedInitData.user.photo_url;
-    username.value = parsedInitData.user.username;
+    avatar.value = user.photo_url || "";
+    username.value = user.username || user.first_name || "User";
 })
 
 
