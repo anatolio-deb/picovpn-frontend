@@ -5,7 +5,7 @@
             </v-app-bar-nav-icon>
         </template>
 
-        <v-app-bar-title>{{ avatar }}</v-app-bar-title>
+        <v-app-bar-title></v-app-bar-title>
     </v-app-bar>
 </template>
 
@@ -15,8 +15,11 @@ const avatar = ref("");
 const username = ref("");
 
 onMounted(() => {
-    avatar.value = initData.user.photo_url;
-    username.value = initData.user.username;
+    // avatar.value = initData.user.photo_url;
+    // username.value = initData.user.username;
+    console.log(initData.user.photo_url)
+    console.log(initData.user.username)
+
 })
 
 
