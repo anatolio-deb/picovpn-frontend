@@ -1,7 +1,8 @@
 <template>
     <v-app-bar :elevation="2">
         <template v-slot:prepend>
-            <v-icon-btn :icon="avatar"></v-icon-btn>
+            <v-img v-if="avatar" :src="avatar" width="40" height="40" class="mr-2 rounded-full"
+                style="object-fit: cover; object-position: center;" />
         </template>
 
         <v-app-bar-title>{{ username }}</v-app-bar-title>
