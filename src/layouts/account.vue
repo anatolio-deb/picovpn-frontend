@@ -10,15 +10,16 @@
 </template>
 
 <script lang="ts" setup>
-const initData: any = localStorage.getItem("initData");
+const initData = localStorage.getItem("initData") || "{}";
+const parsedInitData: any = JSON.parse(initData);
 const avatar = ref("");
 const username = ref("");
 
 onMounted(() => {
     // avatar.value = initData.user.photo_url;
     // username.value = initData.user.username;
-    console.log(initData.user.photo_url)
-    console.log(initData.user.username)
+    console.log(parsedInitData.user.photo_url)
+    console.log(parsedInitData.user.username)
 
 })
 
