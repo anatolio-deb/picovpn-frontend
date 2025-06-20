@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { retrieveRawInitData } from "@telegram-apps/sdk";
-import { onMounted } from "vue";
+import { onBeforeMount } from "vue";
 import apiService from "@/api/axios";
 import { useAppStore } from '@/stores/app'
 
