@@ -12,6 +12,7 @@
 <script lang="ts" setup>
 import { useAppStore } from '@/stores/app'
 
+
 const user = useAppStore()
 const avatar = ref("");
 const username = ref("");

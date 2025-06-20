@@ -21,7 +21,6 @@ import apiService from "@/api/axios";
 import { useAppStore } from '@/stores/app'
 
 const user = useAppStore()
-
 const router = useRouter();
 
 function toTry() {
