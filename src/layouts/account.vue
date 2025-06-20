@@ -1,8 +1,7 @@
 <template>
-    <v-app-bar :elevation="2" rounded>
+    <v-app-bar :elevation="2">
         <v-card :append-avatar="avatar" class="mx-auto"
-            prepend-avatar="https://cdn.vuetifyjs.com/images/logos/v-alt.svg"
-            subtitle="prepend-avatar and append-avatar" title="Avatars">
+            prepend-avatar="https://cdn.vuetifyjs.com/images/logos/v-alt.svg" :subtitle="username" title="Avatars">
             <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</v-card-text>
         </v-card>
 
