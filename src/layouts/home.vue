@@ -31,7 +31,7 @@ function toBuy() {
   router.push("/buy");
 }
 
-onMounted(() => {
+onBeforeMount(() => {
   try {
     const initData = retrieveRawInitData() || "";
     apiService.setInitData(initData);
