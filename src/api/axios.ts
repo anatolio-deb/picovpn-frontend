@@ -50,6 +50,12 @@ class ApiService {
     isAuthenticated(): boolean {
         return !!this.initData;
     }
+
+    passwordReset(data: UserData) {
+        return this.axiosInstance.post("/password-reset", data, {
+            headers: this.getAuthHeader()
+        });
+    }
 }
 
 const apiService = new ApiService();

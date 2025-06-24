@@ -15,6 +15,11 @@ const myCustomLightTheme = {
   dark: false,
   colors: {
     background: '#111318',
+    // surface:'#2A1458',
+    // 'surface-bright': '#2A1458',
+    // 'surface-light': '#2A1458',
+    // 'surface-variant': '#2A1458',
+    // 'on-surface-variant': '#2A1458',
   }
 }
 

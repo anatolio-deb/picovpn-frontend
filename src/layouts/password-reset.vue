@@ -15,7 +15,7 @@ import router from "@/router";
 
 function onSubmit(event: Event) {
     Password.loading.value = true
-    apiService.postUser({
+    apiService.passwordReset({
         password: Password.password.value,
         password_confirmation: Password.passwordConfirmation.value
     })

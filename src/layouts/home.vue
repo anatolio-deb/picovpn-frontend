@@ -1,5 +1,6 @@
 <template>
-  <v-container>
+  <v-container class="text-center"
+    style="height: 100vh; display: flex; flex-direction: column; justify-content: center;">
     <v-img class="mb-4" height="150" src="@/assets/logo.png" />
     <Header text1="Welcome to" text2="PicoVPN"></Header>
     <v-row justify="center">

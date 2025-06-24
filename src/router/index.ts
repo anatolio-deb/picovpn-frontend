@@ -11,6 +11,7 @@ import { routes } from "vue-router/auto-routes";
 import auth from "@/layouts/auth.vue";
 import home from "@/layouts/home.vue";
 import account from "@/layouts/account.vue"
+import passwordReset from "@/layouts/password-reset.vue";
 
 
 const router = createRouter({
@@ -19,7 +20,8 @@ const router = createRouter({
     ...setupLayouts(routes),
     { path: "/", component: home },
     { path: "/try", component: auth },
-    { path: "/account", component: account}
+    { path: "/account", component: account},
+    {path:"/password-reset", component: passwordReset},
     ],
 });
 
