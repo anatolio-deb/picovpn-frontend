@@ -41,8 +41,8 @@ class ApiService {
         });
     }
 
-    getUser(userId: string) {
-        return this.axiosInstance.get(`/users/${userId}`, {
+    getUser() {
+        return this.axiosInstance.get(`/users/`, {
             headers: this.getAuthHeader()
         });
     }

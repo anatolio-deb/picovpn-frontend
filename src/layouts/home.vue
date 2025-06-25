@@ -56,7 +56,7 @@ onBeforeMount(() => {
           language_code: response.data.user.language_code,
           is_premium: response.data.user.is_premium,
         });
-        apiService.getUser(response.data.user.id)
+        apiService.getUser()
           .then((response) => {
             if (response.status === 200) {
               router.push("/account");
