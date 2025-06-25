@@ -1,13 +1,16 @@
 <template>
-  <v-container class="text-center"
-    style="height: 100vh; display: flex; flex-direction: column; justify-content: center;">
-    <v-img class="mb-4" height="150" src="@/assets/logo.png" />
-    <Header text1="Welcome to" text2="PicoVPN"></Header>
+  <v-container>
+    <v-row>
+      <v-img height="200" src="@/assets/logo.png" />
+    </v-row>
     <v-row justify="center">
-      <v-btn class="mx-2" rounded="xl" size="large" color="indigo-lighten-4" variant="tonal" @click="toTry">
+      <Header text1="Welcome to" text2="PicoVPN"></Header>
+    </v-row>
+    <v-row justify="center" class="my-12">
+      <v-btn class="mx-1" rounded="xl" size="large" color="indigo-lighten-4" variant="tonal" @click="toTry">
         Try
       </v-btn>
-      <v-btn class="mx-2" rounded=" xl" size="large" color="cyan-lighten-4" variant="tonal" @click="toBuy">
+      <v-btn class="mx-1" rounded=" xl" size="large" color="cyan-lighten-4" variant="tonal" @click="toBuy">
         Buy
       </v-btn>
     </v-row>
