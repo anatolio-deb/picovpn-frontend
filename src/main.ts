@@ -6,6 +6,8 @@
 
 // Plugins
 import { registerPlugins } from '@/plugins'
+import { createPinia } from 'pinia'
+
 
 // Components
 import App from './App.vue'
@@ -18,9 +20,10 @@ import { createApp } from 'vue'
 // Styles
 import 'unfonts.css'
 
-
+const pinia = createPinia()
 const app = createApp(App)
 app.use(VueAxios, axios)
+app.use(pinia)
 
 registerPlugins(app)
 

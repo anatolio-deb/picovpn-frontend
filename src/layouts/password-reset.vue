@@ -43,8 +43,6 @@ function passwordConfirmed(v: any) {
     );
 }
 
-
-
 function onSubmit(event: Event) {
     loading.value = true
     apiService.passwordReset({

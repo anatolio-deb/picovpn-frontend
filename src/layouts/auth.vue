@@ -49,7 +49,7 @@ function onSubmit(event: Event) {
     })
         .then((response) => {
             if (response.status === 200) {
-                router.push("/home");
+                router.push("/account");
             }
         })
         .catch((error) => {
