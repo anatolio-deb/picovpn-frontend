@@ -10,7 +10,7 @@
         <v-row>
             <v-col>
                 <v-card class="mx-auto px-6 py-8" max-width="344">
-                    <v-form v-model="form" @submit.prevent="">
+                    <v-form v-model="form" @submit.prevent="onSubmit">
                         <v-text-field type="password" v-model="password" :readonly="loading" :rules="[required]"
                             label="Password" placeholder="Enter your password" clearable></v-text-field>
 

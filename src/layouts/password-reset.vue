@@ -2,7 +2,7 @@
     <appBar></appBar>
     <v-main>
         <v-card class="mx-auto px-6 py-8" max-width="344">
-            <v-form v-model="form" @submit.prevent="">
+            <v-form v-model="form" @submit.prevent="onSubmit">
                 <v-text-field type="password" v-model="password" :readonly="loading" :rules="[required]"
                     label="Password" placeholder="Enter your password" clearable></v-text-field>
 
@@ -45,7 +45,7 @@ function passwordConfirmed(v: any) {
 
 
 
-function submit(event: Event) {
+function onSubmit(event: Event) {
     loading.value = true
     apiService.passwordReset({
         password: password.value,
