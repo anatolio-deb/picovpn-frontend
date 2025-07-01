@@ -14,13 +14,16 @@ import axios from 'axios'
 
 // Composables
 import { createApp } from 'vue'
+import  createPinia from '@/stores/index'
 
 // Styles
 import 'unfonts.css'
 
 
 const app = createApp(App)
+const pinia = createPinia
 app.use(VueAxios, axios)
+app.use(pinia)
 
 registerPlugins(app)
 
