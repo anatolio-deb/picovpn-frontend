@@ -22,8 +22,9 @@ import { useRouter } from "vue-router";
 import { retrieveRawInitData } from "@telegram-apps/sdk";
 import { onBeforeMount } from "vue";
 import apiService from "@/api/axios";
-import { userStore } from '@/stores/app'
+import { useAppStore } from '@/stores/app'
 
+const user = useAppStore()
 const router = useRouter();
 
 function toTry() {
@@ -45,7 +46,7 @@ onBeforeMount(() => {
   apiService.telegramAuth()
     .then((response) => {
       if (response.status === 200) {
-        userStore.$patch({
+        user.$patch({
           id: response.data.user.id,
           username: response.data.user.username,
           photo_url: response.data.user.photo_url,

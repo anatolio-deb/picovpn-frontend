@@ -5,7 +5,7 @@
                 <template v-slot:activator="{ props }">
                     <v-btn icon v-bind="props">
                         <v-avatar size="large">
-                            <v-img :src="userStore.photo_url" :alt="userStore.initials" />
+                            <v-img :src="user.photo_url" :alt="user.initials" />
                         </v-avatar>
                     </v-btn>
                 </template>
@@ -13,11 +13,11 @@
                     <v-card-text>
                         <div class="mx-auto text-center">
                             <v-avatar>
-                                <span class="text-h5">{{ userStore.initials }}</span>
+                                <span class="text-h5">{{ user.initials }}</span>
                             </v-avatar>
-                            <h3>{{ userStore.fullName }}</h3>
+                            <h3>{{ user.fullName }}</h3>
                             <p class="text-caption mt-1">
-                                {{ userStore.username }}
+                                {{ user.username }}
                             </p>
                             <v-divider class="my-3"></v-divider>
                             <v-btn variant="text" rounded href="/password-reset">
@@ -37,9 +37,9 @@
 </template>
 
 <script lang="ts" setup>
-import { userStore } from '@/stores/app'
+import { useAppStore } from '@/stores/app'
 
-// const user = useAppStore()
+const user = useAppStore()
 // const avatar = ref("");
 // const username = ref("");
 // const firstName = ref("");
