@@ -1,5 +1,6 @@
 <template>
-    <appBar></appBar>
+    <appBar :photoUrl="user.photo_url" :initials="user.initials" :username="user.username" :fullName="user.fullName">
+    </appBar>
     <v-main>
         <v-card class="mx-auto px-6 py-8" max-width="344">
             <v-form v-model="form" @submit.prevent="onSubmit">
@@ -27,6 +28,9 @@ import router from "@/router";
 import { ref } from "vue";
 // import apiService from "@/api/axios"
 // import router from "@/router";
+
+import { useAppStore } from '@/stores/app';
+const user = useAppStore()
 
 const form = ref(false);
 const password = ref(null);
