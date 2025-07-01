@@ -5,7 +5,7 @@
                 <template v-slot:activator="{ props }">
                     <v-btn icon v-bind="props">
                         <v-avatar size="large">
-                            <v-img :src="photoUrl" :alt="initials" />
+                            <v-img :src="user.photo_url" :alt="user.initials" />
                         </v-avatar>
                     </v-btn>
                 </template>
@@ -13,11 +13,11 @@
                     <v-card-text>
                         <div class="mx-auto text-center">
                             <v-avatar>
-                                <span class="text-h5">{{ initials }}</span>
+                                <span class="text-h5">{{ user.initials }}</span>
                             </v-avatar>
-                            <h3>{{ fullName }}</h3>
+                            <h3>{{ user.fullName }}</h3>
                             <p class="text-caption mt-1">
-                                {{ username }}
+                                {{ user.username }}
                             </p>
                             <v-divider class="my-3"></v-divider>
                             <v-btn variant="text" rounded href="/password-reset">
@@ -37,12 +37,34 @@
 </template>
 
 <script lang="ts" setup>
+import { retrieveRawInitData } from "@telegram-apps/sdk";
+import { onBeforeMount } from "vue";
+import apiService from "@/api/axios";
+import { useAppStore } from '@/stores/app';
+// import { useRouter } from "vue-router";
 
-const props = defineProps<{
-    photoUrl?: string
-    initials?: string
-    fullName?: string
-    username?: string
-}>()
+const user = useAppStore()
+// const router = useRouter();
 
+onBeforeMount(() => {
+    try {
+        const initData = retrieveRawInitData() || "";
+        apiService.setInitData(initData);
+    } catch (error) {
+        console.error("Failed to retrieve launch parameters:", error);
+        return;
+    }
+
+    apiService.telegramAuth()
+        .then((response) => {
+            if (response.status === 200) {
+                user.$patch(response.data.user);
+            } else {
+                console.log(response.data.message);
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+})
 </script>
