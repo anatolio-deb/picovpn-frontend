@@ -4,8 +4,8 @@
     <v-main>
         <v-container>
             <v-row>
-                <v-card class="mx-auto">
-                    <v-card-text>
+                <v-card class="mx-auto" color="black">
+                    <v-card-text color="grey-lighten-5">
                         <div>VPN Username</div>
 
                         <p class="text-h4 font-weight-black">{{ plan.user.telegramUsername }}</p>
