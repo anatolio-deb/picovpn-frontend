@@ -10,7 +10,7 @@
 
                         <p class="text-h4 font-weight-black">{{ plan.user.telegram_username }}</p>
 
-                        <p>{{ plan.daysLeft() }} days left</p>
+                        <p>{{ plan.daysLeft }} days left</p>
                     </v-card-text>
 
                     <v-card-actions>
