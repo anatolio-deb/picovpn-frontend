@@ -24,13 +24,15 @@
                 </v-card>
             </v-row>
             <v-row>
-                <v-card class="mx-auto" href="https://github.com/vuetifyjs/vuetify/" max-width="344"
-                    prepend-icon="mdi-apple" rel="noopener" subtitle="" target="_blank" title="Available on App Store">
+                <v-card class="mx-auto" href="https://apps.apple.com/us/app/cisco-secure-client/id1135064690"
+                    max-width="344" prepend-icon="mdi-apple" rel="noopener" subtitle="" target="_blank"
+                    title="Available on App Store">
                 </v-card>
             </v-row>
             <v-row>
-                <v-card class="mx-auto" href="https://github.com/vuetifyjs/vuetify/" max-width="344"
-                    prepend-icon="mdi-google-play" rel="noopener" subtitle="" target="_blank"
+                <v-card class="mx-auto"
+                    href="https://play.google.com/store/apps/details?id=com.cisco.anyconnect.vpn.android.avf&hl=en"
+                    max-width="344" prepend-icon="mdi-google-play" rel="noopener" subtitle="" target="_blank"
                     title="Available on Google Play">
                 </v-card>
             </v-row>
