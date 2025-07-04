@@ -23,19 +23,15 @@
 </template>
 
 <script setup lang="ts">
-import apiService from "@/api/axios"
 import router from "@/router";
 import { ref } from "vue";
-// import apiService from "@/api/axios"
-// import router from "@/router";
-
-// import { useAppStore } from '@/stores/app';
-// const user = useAppStore()
+import { useUserStore } from '@/stores/app';
 
 const form = ref(false);
-const password = ref(null);
-const passwordConfirmation = ref(null);
+const password = ref("");
+const passwordConfirmation = ref("");
 const loading = ref(false);
+const user = useUserStore()
 
 function required(v: any) {
     return !!v || "Field is required";
@@ -49,20 +45,13 @@ function passwordConfirmed(v: any) {
 
 function onSubmit(event: Event) {
     loading.value = true
-    apiService.passwordReset({
-        password: password.value,
-        password_confirmation: passwordConfirmation.value
-    })
-        .then((response) => {
-            if (response.status === 200) {
-                router.push("/home");
-            }
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-        .finally(() => {
-            loading.value = false
-        })
+    try {
+        user.passwordReset(password.value, passwordConfirmation.value)
+        router.push("/home")
+    } catch (error) {
+        console.error(error)
+    } finally {
+        loading.value = false
+    }
 }
 </script>

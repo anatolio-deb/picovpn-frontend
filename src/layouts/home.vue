@@ -22,12 +22,11 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-// import { useAppStore } from '@/stores/app';
-import apiService from "@/api/axios";
+import { useUserStore } from '@/stores/app';
 
 
 const router = useRouter();
-// const user = useAppStore()
+const user = useUserStore()
 
 function toTry() {
   router.push("/try");
@@ -37,17 +36,11 @@ function toBuy() {
 }
 
 onMounted(() => {
-  apiService.getUser()
-    .then((response) => {
-      if (response.status === 200) {
-        router.push("/account");
-      } else {
-        console.log(response.data.message);
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  try {
+    user.fetchUser()
+    router.push("/account");
+  } catch (error) {
+    console.error(error)
+  }
 })
-
 </script>

@@ -36,32 +36,26 @@
 </template>
 
 <script setup lang="ts">
-import apiService from "@/api/axios"
+import { useUserStore } from "@/stores/app";
 import router from "@/router";
 
 const form = ref(false);
-const password = ref(null);
-const passwordConfirmation = ref(null);
+const password = ref("");
+const passwordConfirmation = ref("");
 const loading = ref(false);
+const user = useUserStore();
 
 
 function onSubmit(event: Event) {
     loading.value = true
-    apiService.postUser({
-        password: password.value,
-        password_confirmation: passwordConfirmation.value
-    })
-        .then((response) => {
-            if (response.status === 200) {
-                router.push("/account");
-            }
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-        .finally(() => {
-            loading.value = false
-        })
+    try {
+        user.registerUser(password.value, passwordConfirmation.value)
+        router.push("/account")
+    } catch (error) {
+        console.error(error)
+    } finally {
+        loading.value = false
+    }
 }
 function required(v: any) {
     return !!v || "Field is required";

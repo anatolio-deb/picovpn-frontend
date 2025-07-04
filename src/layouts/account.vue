@@ -3,28 +3,42 @@
     </appBar>
     <v-main>
         <v-container>
-            <v-row my-5>
+            <v-row>
+                <v-col>
+                    <v-card class="mx-auto">
+                        <v-card-text>
+                            <div>VPN Username</div>
+
+                            <p class="text-h4 font-weight-black">{{ plan.plan.user.telegramUsername }}</p>
+
+                            <p>{{ plan.daysLeft }} days left</p>
+                        </v-card-text>
+
+                        <v-card-actions>
+                            <v-btn color="deep-purple-accent-4" text="Upgrade" variant="text"></v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-col>
                 <v-card class="mx-auto">
-                    <v-card-text>
-                        <div>VPN Username</div>
+                    <v-list>
+                        <v-list-subheader>Servers</v-list-subheader>
 
-                        <p class="text-h4 font-weight-black">{{ plan.user.telegramUsername }}</p>
-
-                        <p>{{ plan.daysLeft }} days left</p>
-                    </v-card-text>
-
-                    <v-card-actions>
-                        <v-btn color="deep-purple-accent-4" text="Upgrade" variant="text"></v-btn>
-                    </v-card-actions>
+                        <v-list-item v-for="(item, i) in daemons.daemonsData" :key="i" :value="item" color="primary">
+                            <v-list-item-title v-text="item.address"></v-list-item-title>
+                        </v-list-item>
+                    </v-list>
                 </v-card>
+                <v-col>
+
+                </v-col>
             </v-row>
-            <v-row my-5>
+            <v-row>
                 <v-card class="mx-auto" href="https://apps.apple.com/us/app/cisco-secure-client/id1135064690"
                     prepend-icon="mdi-apple" rel="noopener" subtitle="Available for download" target="_blank"
                     title="App Store">
                 </v-card>
             </v-row>
-            <v-row my-5>
+            <v-row>
                 <v-card class="mx-auto"
                     href="https://play.google.com/store/apps/details?id=com.cisco.anyconnect.vpn.android.avf&hl=en"
                     prepend-icon="mdi-google-play" rel="noopener" subtitle="Available for download" target="_blank"
@@ -36,22 +50,17 @@
 </template>
 
 <script setup lang="ts">
-import { usePlanStore } from '@/stores/app';
-import apiService from "@/api/axios";
+import { usePlanStore, useDaemonStore } from '@/stores/app';
 
 const plan = usePlanStore()
+const daemons = useDaemonStore()
 
 onMounted(() => {
-    apiService.getPlan()
-        .then((response) => {
-            if (response.status === 200) {
-                plan.$patch(response.data)
-            } else {
-                console.log(response.data.message);
-            }
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+    try {
+        plan.fetchPlan()
+        daemons.fetchDaemons()
+    } catch (error) {
+        console.error(error)
+    }
 })
 </script>

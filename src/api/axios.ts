@@ -5,6 +5,10 @@ interface UserData {
     password_confirmation: string | null,
 }
 
+export interface Daemon{
+    address: string
+}
+
 class ApiService {
     private axiosInstance;
     private initData: string | null = null;
@@ -59,6 +63,12 @@ class ApiService {
 
     getPlan(){
          return this.axiosInstance.get("/plans", {
+            headers: this.getAuthHeader()
+        });
+    }
+
+    getDaemons(){
+        return this.axiosInstance.get("/daemons", {
             headers: this.getAuthHeader()
         });
     }
