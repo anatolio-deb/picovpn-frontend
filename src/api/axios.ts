@@ -42,7 +42,7 @@ class ApiService {
     }
 
     getUser() {
-        return this.axiosInstance.get(`/users/`, {
+        return this.axiosInstance.get("/users", {
             headers: this.getAuthHeader()
         });
     }
@@ -58,7 +58,7 @@ class ApiService {
     }
 
     getPlan(){
-         return this.axiosInstance.get(`/plans/`, {
+         return this.axiosInstance.get("/plans", {
             headers: this.getAuthHeader()
         });
     }
