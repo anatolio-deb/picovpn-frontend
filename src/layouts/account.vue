@@ -19,17 +19,17 @@
                         </v-card-actions>
                     </v-card>
                 </v-col>
-                <v-card class="mx-auto">
-                    <v-list>
-                        <v-list-subheader>Servers</v-list-subheader>
-
-                        <v-list-item v-for="(item, i) in daemons.daemonsData" :key="i" :value="item" color="primary">
-                            <v-list-item-title v-text="item.address"></v-list-item-title>
-                        </v-list-item>
-                    </v-list>
-                </v-card>
                 <v-col>
+                    <v-card class="mx-auto">
+                        <v-list>
+                            <v-list-subheader>Servers</v-list-subheader>
 
+                            <v-list-item v-for="(item, i) in daemons.daemonsData" :key="i" :value="item"
+                                color="primary">
+                                <v-list-item-title v-text="item.address"></v-list-item-title>
+                            </v-list-item>
+                        </v-list>
+                    </v-card>
                 </v-col>
             </v-row>
             <v-row>
