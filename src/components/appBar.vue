@@ -39,7 +39,6 @@
 <script lang="ts" setup>
 import { retrieveRawInitData } from "@telegram-apps/sdk";
 import { onBeforeMount } from "vue";
-import apiService from "@/api/axios";
 import { useUserStore } from '@/stores/app';
 // import { useRouter } from "vue-router";
 
@@ -49,22 +48,9 @@ const user = useUserStore()
 onBeforeMount(() => {
     try {
         const initData = retrieveRawInitData() || "";
-        apiService.setInitData(initData);
+        user.telegramAuth(initData)
     } catch (error) {
         console.error("Failed to retrieve launch parameters:", error);
-        return;
     }
-
-    apiService.telegramAuth()
-        .then((response) => {
-            if (response.status === 200) {
-                user.$patch(response.data.user);
-            } else {
-                console.log(response.data.message);
-            }
-        })
-        .catch((error) => {
-            console.log(error);
-        });
 })
 </script>
