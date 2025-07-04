@@ -5,7 +5,7 @@
                 <template v-slot:activator="{ props }">
                     <v-btn icon v-bind="props">
                         <v-avatar size="large">
-                            <v-img :src="user.photo_url" :alt="user.initials" />
+                            <v-img :src="user.userData.photo_url" :alt="user.initials" />
                         </v-avatar>
                     </v-btn>
                 </template>
@@ -17,7 +17,7 @@
                             </v-avatar>
                             <h3>{{ user.fullName }}</h3>
                             <p class="text-caption mt-1">
-                                {{ user.username }}
+                                {{ user.userData.username }}
                             </p>
                             <v-divider class="my-3"></v-divider>
                             <v-btn variant="text" rounded href="/password-reset">
