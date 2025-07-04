@@ -3,7 +3,7 @@
     </appBar>
     <v-main>
         <v-container>
-            <v-row>
+            <v-row class="md-2">
                 <v-card class="mx-auto">
                     <v-card-text>
                         <div>VPN Username</div>
@@ -18,13 +18,13 @@
                     </v-card-actions>
                 </v-card>
             </v-row>
-            <v-row>
+            <v-row class="md-2">
                 <v-card class="mx-auto" href="https://apps.apple.com/us/app/cisco-secure-client/id1135064690"
                     prepend-icon="mdi-apple" rel="noopener" subtitle="Available for download" target="_blank"
                     title="App Store">
                 </v-card>
             </v-row>
-            <v-row>
+            <v-row class="md-2">
                 <v-card class="mx-auto"
                     href="https://play.google.com/store/apps/details?id=com.cisco.anyconnect.vpn.android.avf&hl=en"
                     prepend-icon="mdi-google-play" rel="noopener" subtitle="Available for download" target="_blank"
