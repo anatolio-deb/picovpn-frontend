@@ -24,18 +24,15 @@
                 </v-card>
             </v-row>
             <v-row>
-                <v-col>
-                    <v-card append-icon="mdi-open-in-new" class="mx-auto" href="https://github.com/vuetifyjs/vuetify/"
-                        max-width="344" prepend-icon="mdi-github" rel="noopener"
-                        subtitle="Check out the official repository" target="_blank" title="Vuetify on GitHub">
-                    </v-card>
-                </v-col>
-                <v-col>
-                    <v-card append-icon="mdi-open-in-new" class="mx-auto" href="https://github.com/vuetifyjs/vuetify/"
-                        max-width="344" prepend-icon="mdi-github" rel="noopener"
-                        subtitle="Check out the official repository" target="_blank" title="Vuetify on GitHub">
-                    </v-card>
-                </v-col>
+                <v-card class="mx-auto" href="https://github.com/vuetifyjs/vuetify/" max-width="344"
+                    prepend-icon="mdi-apple" rel="noopener" subtitle="" target="_blank" title="Available on App Store">
+                </v-card>
+            </v-row>
+            <v-row>
+                <v-card class="mx-auto" href="https://github.com/vuetifyjs/vuetify/" max-width="344"
+                    prepend-icon="mdi-google-play" rel="noopener" subtitle="" target="_blank"
+                    title="Available on Google Play">
+                </v-card>
             </v-row>
         </v-container>
     </v-main>
