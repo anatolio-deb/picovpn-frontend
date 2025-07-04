@@ -38,6 +38,7 @@
                     title="App Store">
                 </v-card>
             </v-row>
+            <v-row></v-row>
             <v-row>
                 <v-card class="mx-auto"
                     href="https://play.google.com/store/apps/details?id=com.cisco.anyconnect.vpn.android.avf&hl=en"
