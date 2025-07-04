@@ -40,10 +40,10 @@
 import { retrieveRawInitData } from "@telegram-apps/sdk";
 import { onBeforeMount } from "vue";
 import apiService from "@/api/axios";
-import { useAppStore } from '@/stores/app';
+import { useUserStore } from '@/stores/app';
 // import { useRouter } from "vue-router";
 
-const user = useAppStore()
+const user = useUserStore()
 // const router = useRouter();
 
 onBeforeMount(() => {
