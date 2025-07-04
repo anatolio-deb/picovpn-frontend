@@ -6,7 +6,7 @@
             <v-row>
                 <v-card class="mx-auto">
                     <v-card-text>
-                        <div>VPN username</div>
+                        <div>VPN Username</div>
 
                         <p class="text-h4 font-weight-black">{{ plan.user.telegramUsername }}</p>
 
