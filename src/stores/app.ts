@@ -29,7 +29,7 @@ export const usePlanStore = defineStore('plan', {
     expiresAt: ""
   }),
   getters:{
-    daysLeft:(state)=>(moment(Date.parse(state.expiresAt)).diff(Date.now()))
+    daysLeft:(state)=>(moment(Date.parse(state.expiresAt)).diff(Date.now(), 'days'))
   }
 })
 
