@@ -56,6 +56,12 @@ class ApiService {
             headers: this.getAuthHeader()
         });
     }
+
+    getPlan(){
+         return this.axiosInstance.get(`/plans/`, {
+            headers: this.getAuthHeader()
+        });
+    }
 }
 
 const apiService = new ApiService();

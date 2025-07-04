@@ -6,20 +6,15 @@
             <v-row>
                 <v-card class="mx-auto" max-width="344">
                     <v-card-text>
-                        <div>Word of the Day</div>
+                        <div>VPN username</div>
 
-                        <p class="text-h4 font-weight-black">be•nev•o•lent</p>
+                        <p class="text-h4 font-weight-black">{{ plan.user.telegram_username }}</p>
 
-                        <p>adjective</p>
-
-                        <div class="text-medium-emphasis">
-                            well meaning and kindly.<br>
-                            "a benevolent smile"
-                        </div>
+                        <p>{{ plan.daysLeft() }} days left</p>
                     </v-card-text>
 
                     <v-card-actions>
-                        <v-btn color="deep-purple-accent-4" text="Learn More" variant="text"></v-btn>
+                        <v-btn color="deep-purple-accent-4" text="Upgrade" variant="text"></v-btn>
                     </v-card-actions>
                 </v-card>
             </v-row>
@@ -40,5 +35,23 @@
     </v-main>
 </template>
 
-<!-- <script lang="ts">
-</script> -->
+<script lang="ts">
+import { usePlanStore } from '@/stores/app';
+import apiService from "@/api/axios";
+
+const plan = usePlanStore()
+
+onMounted(() => {
+    apiService.getPlan()
+        .then((response) => {
+            if (response.status === 200) {
+                plan.$patch(response.data)
+            } else {
+                console.log(response.data.message);
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+})
+</script>
