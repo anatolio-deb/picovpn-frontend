@@ -1,6 +1,6 @@
 <template>
-    <appBar>
-    </appBar>
+    <AppBar>
+    </AppBar>
     <v-main>
         <v-card class="mx-auto px-6 py-8" max-width="344">
             <v-form v-model="form" @submit.prevent="onSubmit">
