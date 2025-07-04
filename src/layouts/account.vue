@@ -8,7 +8,7 @@
                     <v-card-text>
                         <div>VPN username</div>
 
-                        <p class="text-h4 font-weight-black">{{ plan.user.telegram_username }}</p>
+                        <p class="text-h4 font-weight-black">{{ plan.user.telegramUsername }}</p>
 
                         <p>{{ plan.daysLeft }} days left</p>
                     </v-card-text>

@@ -21,15 +21,15 @@ export const useAppStore = defineStore('app', {
 
 export const usePlanStore = defineStore('plan', {
   state: ()=>({
-    user_id: "",
+    userId: "",
     user: {
-      telegram_username: "",
-      telegram_id:""
+      telegramUsername: "",
+      telegramId:""
     },
-    expires_at: ""
+    expiresAt: ""
   }),
   getters:{
-    daysLeft:(state)=>(moment(Date.parse(state.expires_at)).diff(Date.now()))
+    daysLeft:(state)=>(moment(Date.parse(state.expiresAt)).diff(Date.now()))
   }
 })
 
