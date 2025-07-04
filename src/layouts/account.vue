@@ -4,7 +4,7 @@
     <v-main>
         <v-container>
             <v-row>
-                <v-card class="mx-auto" max-width="344">
+                <v-card class="mx-auto">
                     <v-card-text>
                         <div>VPN username</div>
 
@@ -38,7 +38,7 @@
     </v-main>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { usePlanStore } from '@/stores/app';
 import apiService from "@/api/axios";
 
