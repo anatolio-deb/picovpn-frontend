@@ -38,14 +38,13 @@
 
 <script lang="ts" setup>
 import { retrieveRawInitData } from "@telegram-apps/sdk";
-import { onBeforeMount } from "vue";
 import { useUserStore } from '@/stores/app';
 // import { useRouter } from "vue-router";
 
 const user = useUserStore()
 // const router = useRouter();
 
-onBeforeMount(() => {
+onMounted(() => {
     try {
         const initData = retrieveRawInitData() || "";
         user.telegramAuth(initData)

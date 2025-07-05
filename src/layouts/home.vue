@@ -35,7 +35,7 @@ function toBuy() {
   router.push("/buy");
 }
 
-onBeforeMount(() => {
+onMounted(() => {
   try {
     user.fetchUser()
     if (user.authenticated == true) {
