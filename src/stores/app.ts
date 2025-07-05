@@ -40,8 +40,14 @@ export const useUserStore = defineStore('users', {
        apiService.getUser()
         .then((response) => {
           if (response.status === 200) {
-            this.userData.id = response.data.telegramId
-            this.userData.username = response.data.telegramUsername
+            this.$patch({
+              userData:{
+                id:response.data.telegramId,
+                username: response.data.telegramUsername
+              }}
+            )
+            // this.userData.id = response.data.telegramId
+            // this.userData.username = response.data.telegramUsername
           } else {
             throw new Error(response.data.message)
           }
