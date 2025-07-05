@@ -32,9 +32,9 @@ export const useUserStore = defineStore('users', {
               this.userData.username = response.data.telegramUsername
             }
         })
-        .catch((error) => {
-            throw error;
-        })
+        // .catch((error) => {
+        //     throw error;
+        // })
     },
     fetchUser(){
        apiService.getUser()
@@ -45,9 +45,9 @@ export const useUserStore = defineStore('users', {
             throw new Error(response.data.message)
           }
         })
-        .catch((error) => {
-          throw error;
-        });
+        // .catch((error) => {
+        //   throw error;
+        // });
     },
     passwordReset(password1: string, password2: string){
       apiService.passwordReset({
@@ -61,9 +61,9 @@ export const useUserStore = defineStore('users', {
             throw new Error(response.data.message)
           }
         })
-        .catch((error) => {
-            throw error
-        })
+        // .catch((error) => {
+        //     throw error
+        // })
     },
     telegramAuth(initData: string){
       apiService.setInitData(initData);
@@ -75,9 +75,9 @@ export const useUserStore = defineStore('users', {
                 throw new Error(response.data.message);
             }
         })
-        .catch((error) => {
-            throw error;
-        });
+        // .catch((error) => {
+        //     throw error;
+        // });
     }
   }
 })
@@ -106,9 +106,9 @@ export const usePlanStore = defineStore('plan', {
                 throw new Error(response.data.message);
             }
         })
-        .catch((error) => {
-            throw error;
-        });
+        // .catch((error) => {
+        //     throw error;
+        // });
     }
   }
 })
@@ -127,9 +127,9 @@ export const useDaemonStore = defineStore('daemons', {
                 throw new Error(response.data.message);
             }
         })
-        .catch((error) => {
-            throw error;
-        });
+        // .catch((error) => {
+        //     throw error;
+        // });
     }
   }
 })
