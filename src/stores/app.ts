@@ -77,7 +77,8 @@ export const useUserStore = defineStore('users', {
       apiService.telegramAuth()
         .then((response) => {
             if (response.status === 200) {
-                this.userData = response.data.user
+              this.$patch({userData:response.data.user})
+                // this.userData = response.data.user
             } else {
                 throw new Error(response.data.message);
             }
