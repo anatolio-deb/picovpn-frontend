@@ -35,14 +35,17 @@ function toBuy() {
   router.push("/buy");
 }
 
-onMounted(() => {
+onBeforeMount(() => {
   try {
     user.fetchUser()
-    if (user.authenticated == true) {
-      router.push("/account");
-    }
   } catch (error) {
     console.error(error)
+  }
+})
+
+onMounted(() => {
+  if (user.authenticated == true) {
+    router.push("/account");
   }
 })
 </script>
