@@ -19,7 +19,7 @@ export const useUserStore = defineStore('users', {
   getters:{
     initials: (state) => (state.userData.first_name.charAt(0) + state.userData.last_name.charAt(0)).toUpperCase(),
     fullName: (state) => `${state.userData.first_name} ${state.userData.last_name}`.trim(),
-    authenticated: (state)=> state.userData.id != "" && state.userData.username != ""
+    // authenticated: (state)=> state.userData.id != "" && state.userData.username != ""
   },
   actions:{
     registerUser(password1: string, password2: string){

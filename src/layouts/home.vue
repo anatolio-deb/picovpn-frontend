@@ -38,9 +38,7 @@ function toBuy() {
 onMounted(() => {
   try {
     user.fetchUser()
-    if (user.authenticated == true) {
-      router.push("/account");
-    }
+    router.push("/account");
   } catch (error) {
     console.error(error)
   }
