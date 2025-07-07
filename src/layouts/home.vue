@@ -36,13 +36,20 @@ function toBuy() {
 }
 
 onMounted(() => {
-  try {
-    user.fetchUser()
-    if (user.userData.id != "" && user.userData.username != "")
+  user.fetchUser().then((response) => {
+    if (response.status === 200) {
+      user.$patch({
+        userData: {
+          id: response.data.telegramId,
+          username: response.data.telegramUsername
+        }
+      })
       router.push("/account");
-  } catch (error) {
-    console.error(error)
-  }
+    } else {
+      console.log(response.data.message)
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
 })
-
 </script>

@@ -36,25 +36,8 @@ export const useUserStore = defineStore('users', {
         //     throw error;
         // })
     },
-    fetchUser(){
-       apiService.getUser()
-        .then((response) => {
-          if (response.status === 200) {
-            this.$patch({
-              userData:{
-                id:response.data.telegramId,
-                username: response.data.telegramUsername
-              }}
-            )
-            // this.userData.id = response.data.telegramId
-            // this.userData.username = response.data.telegramUsername
-          } else {
-            throw new Error(response.data.message)
-          }
-        })
-        // .catch((error) => {
-        //   throw error;
-        // });
+    async fetchUser(){
+       return await apiService.getUser()
     },
     passwordReset(password1: string, password2: string){
       apiService.passwordReset({
