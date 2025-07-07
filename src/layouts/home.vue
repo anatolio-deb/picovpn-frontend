@@ -38,7 +38,8 @@ function toBuy() {
 onMounted(() => {
   try {
     user.fetchUser()
-    router.push("/account");
+    if (user.userData.id != "" && user.userData.username != "")
+      router.push("/account");
   } catch (error) {
     console.error(error)
   }
