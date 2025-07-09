@@ -35,20 +35,11 @@ function toBuy() {
 }
 
 onMounted(() => {
-  user.telegramAuth().then((response) => {
+  user.fetchUser().then((response) => {
     if (response.status === 200) {
-      user.$patch({ userData: response.data.user })
-      user.fetchUser().then((response) => {
-        if (response.status === 200) {
-          router.push("/account");
-        } else {
-          console.log(response.data.message)
-        }
-      }).catch((error) => {
-        console.error(error);
-      });
+      router.push("/account");
     } else {
-      console.log(response.data.message);
+      console.log(response.data.message)
     }
   }).catch((error) => {
     console.error(error);
