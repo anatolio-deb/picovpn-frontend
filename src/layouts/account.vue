@@ -56,9 +56,10 @@ import { usePlanStore, useDaemonStore, useUserStore } from '@/stores/app';
 import { TonConnectUI } from '@tonconnect/ui'
 
 const tonConnectUI = new TonConnectUI({
-    manifestUrl: 'https://<YOUR_APP_URL>/tonconnect-manifest.json',
+    manifestUrl: 'https://github.com/nikiforidi/picovpn-app/blob/e11ecb96321424ded84cdf0e1316488b26582dac/tonconnect-manifest.json',
     buttonRootId: 'upgrade'
 });
+
 
 const plan = usePlanStore()
 const daemons = useDaemonStore()
