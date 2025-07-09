@@ -22,7 +22,6 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { useUserStore } from '@/stores/app';
-import { retrieveRawInitData } from "@telegram-apps/sdk";
 
 
 const router = useRouter();
@@ -36,21 +35,11 @@ function toBuy() {
 }
 
 onMounted(() => {
-  const initData = retrieveRawInitData() || "";
-  user.telegramAuth(initData).then((response) => {
+  user.fetchUser().then((response) => {
     if (response.status === 200) {
-      user.$patch({ userData: response.data.user })
-      user.fetchUser().then((response) => {
-        if (response.status === 200) {
-          router.push("/account");
-        } else {
-          console.log(response.data.message)
-        }
-      }).catch((error) => {
-        console.error(error);
-      });
+      router.push("/account");
     } else {
-      console.log(response.data.message);
+      console.log(response.data.message)
     }
   }).catch((error) => {
     console.error(error);
