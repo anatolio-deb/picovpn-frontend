@@ -1,6 +1,8 @@
 <template>
-    <AppBar>
-    </AppBar>
+    <v-app-bar :elevation="2" color="black">
+        <v-btn icon="mdi-arrow-left" href="/account">
+        </v-btn>
+    </v-app-bar>
     <v-main>
         <v-card class="mx-auto px-6 py-8" max-width="344">
             <v-form v-model="form" @submit.prevent="onSubmit">
