@@ -15,7 +15,7 @@
                         </v-card-text>
 
                         <v-card-actions>
-                            <v-btn color="deep-purple-accent-4" text="Upgrade" variant="text"></v-btn>
+                            <v-btn id="upgrade" color="deep-purple-accent-4" text="Upgrade" variant="text"></v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-col>
@@ -53,6 +53,12 @@
 
 <script setup lang="ts">
 import { usePlanStore, useDaemonStore, useUserStore } from '@/stores/app';
+import { TonConnectUI } from '@tonconnect/ui'
+
+const tonConnectUI = new TonConnectUI({
+    manifestUrl: 'https://<YOUR_APP_URL>/tonconnect-manifest.json',
+    buttonRootId: 'upgrade'
+});
 
 const plan = usePlanStore()
 const daemons = useDaemonStore()
