@@ -37,19 +37,8 @@
 </template>
 
 <script lang="ts" setup>
-import { retrieveRawInitData } from "@telegram-apps/sdk";
 import { useUserStore } from '@/stores/app';
-// import { useRouter } from "vue-router";
 
 const user = useUserStore()
-// const router = useRouter();
 
-onMounted(() => {
-    try {
-        const initData = retrieveRawInitData() || "";
-        user.telegramAuth(initData)
-    } catch (error) {
-        console.error("Failed to retrieve launch parameters:", error);
-    }
-})
 </script>

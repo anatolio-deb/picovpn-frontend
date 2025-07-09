@@ -1,5 +1,4 @@
 <template>
-  <AppBar hidden></AppBar>
   <v-main>
     <v-container>
       <v-row>
@@ -23,6 +22,7 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { useUserStore } from '@/stores/app';
+import { retrieveRawInitData } from "@telegram-apps/sdk";
 
 
 const router = useRouter();
@@ -36,17 +36,21 @@ function toBuy() {
 }
 
 onMounted(() => {
-  user.fetchUser().then((response) => {
+  const initData = retrieveRawInitData() || "";
+  user.telegramAuth(initData).then((response) => {
     if (response.status === 200) {
-      user.$patch({
-        userData: {
-          id: response.data.telegramId,
-          username: response.data.telegramUsername
+      user.$patch({ userData: response.data.user })
+      user.fetchUser().then((response) => {
+        if (response.status === 200) {
+          router.push("/account");
+        } else {
+          console.log(response.data.message)
         }
-      })
-      router.push("/account");
+      }).catch((error) => {
+        console.error(error);
+      });
     } else {
-      console.log(response.data.message)
+      console.log(response.data.message);
     }
   }).catch((error) => {
     console.error(error);

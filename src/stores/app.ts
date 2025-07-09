@@ -51,24 +51,10 @@ export const useUserStore = defineStore('users', {
             throw new Error(response.data.message)
           }
         })
-        // .catch((error) => {
-        //     throw error
-        // })
     },
-    telegramAuth(initData: string){
+    async telegramAuth(initData: string){
       apiService.setInitData(initData);
-      apiService.telegramAuth()
-        .then((response) => {
-            if (response.status === 200) {
-              this.$patch({userData:response.data.user})
-                // this.userData = response.data.user
-            } else {
-                throw new Error(response.data.message);
-            }
-        })
-        // .catch((error) => {
-        //     throw error;
-        // });
+      return await apiService.telegramAuth()
     }
   }
 })
