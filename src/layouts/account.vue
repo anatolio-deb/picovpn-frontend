@@ -52,17 +52,28 @@
 </template>
 
 <script setup lang="ts">
-import { usePlanStore, useDaemonStore } from '@/stores/app';
+import { usePlanStore, useDaemonStore, useUserStore } from '@/stores/app';
 
 const plan = usePlanStore()
 const daemons = useDaemonStore()
+const user = useUserStore()
+
 
 onMounted(() => {
-    try {
-        plan.fetchPlan()
-        daemons.fetchDaemons()
-    } catch (error) {
-        console.error(error)
-    }
+    user.telegramAuth().then((response) => {
+        if (response.status === 200) {
+            user.$patch({ userData: response.data.user })
+            try {
+                plan.fetchPlan()
+                daemons.fetchDaemons()
+            } catch (error) {
+                console.error(error)
+            }
+        } else {
+            console.log(response.data.message);
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
 })
 </script>

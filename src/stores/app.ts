@@ -52,8 +52,7 @@ export const useUserStore = defineStore('users', {
           }
         })
     },
-    async telegramAuth(initData: string){
-      apiService.setInitData(initData);
+    async telegramAuth(){
       return await apiService.telegramAuth()
     }
   }

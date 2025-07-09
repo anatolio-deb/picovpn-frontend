@@ -1,5 +1,4 @@
 <template>
-    <!-- <AppBar disabled></AppBar> -->
     <v-main>
         <v-container>
             <v-row>

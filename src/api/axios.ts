@@ -1,4 +1,6 @@
 import axios from "axios"
+import { init, retrieveRawInitData } from "@telegram-apps/sdk";
+
 
 interface UserData {
     password: string | null,
@@ -75,4 +77,10 @@ class ApiService {
 }
 
 const apiService = new ApiService();
+try {
+    const initData = retrieveRawInitData() || "";
+    apiService.setInitData(initData);
+} catch (error){
+    console.error(error)
+}
 export default apiService;
