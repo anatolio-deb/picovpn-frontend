@@ -52,6 +52,7 @@
 </template>
 
 <script setup lang="ts">
+import router from '@/router';
 import { usePlanStore, useDaemonStore, useUserStore } from '@/stores/app';
 import { useTonConnectModal } from '@townsquarelabs/ui-vue';
 import {
@@ -73,7 +74,6 @@ const daemons = useDaemonStore()
 const user = useUserStore()
 const wallet = useTonWallet();
 const { state, open, close } = useTonConnectModal();
-const { tonConnectUI, setOptions } = useTonConnectUI();
 
 
 onMounted(() => {
@@ -98,25 +98,7 @@ function onClick(event: Event) {
     if (wallet.value == null) {
         open()
     } else {
-        const transaction = {
-            validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
-            messages: [
-                {
-                    address: "TON_OWNER_WALLET_ADDRESS",
-                    amount: "", // extra conversion needed??
-                    // stateInit: wallet.value?.account.walletStateInit // is it ok?
-                }
-            ]
-        };
-        try {
-            const result = tonConnectUI.sendTransaction(transaction);
-
-            // you can use signed boc to find the transaction 
-            // const someTxData = myAppExplorerService.getTransaction(result.boc);
-            // alert('Transaction was sent successfully', someTxData);
-        } catch (e) {
-            console.error(e);
-        }
+        router.push("/buy")
     }
 }
 </script>

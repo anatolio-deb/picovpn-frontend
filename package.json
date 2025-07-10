@@ -20,6 +20,7 @@
     "@townsquarelabs/ui-vue": "2.0.11-beta.0",
     "axios": "^1.9.0",
     "moment": "^2.30.1",
+    "process": "^0.11.10",
     "vue": "^3.5.13",
     "vue-axios": "^3.5.2",
     "vuetify": "^3.8.1"
