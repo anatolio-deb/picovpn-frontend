@@ -33,7 +33,7 @@ interface Plan {
     price: number;
 }
 
-const pricePerMonth = 0;
+const pricePerMonth = 1;
 
 const plans: Plan[] = [
     { "months": 1, "price": pricePerMonth },
