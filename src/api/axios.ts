@@ -10,6 +10,7 @@ interface UserData {
 export interface Plan {
     months: number;
     price: number;
+    boc: string;
 }
 
 export interface Daemon{

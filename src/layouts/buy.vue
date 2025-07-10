@@ -35,12 +35,12 @@ const { tonConnectUI, setOptions } = useTonConnectUI();
 
 
 
-const pricePerMonth = 1;
+const pricePerMonth = 0;
 
 const plans: Plan[] = [
-    { "months": 1, "price": pricePerMonth },
-    { "months": 6, "price": pricePerMonth * 6 },
-    { "months": 12, "price": pricePerMonth * 12 }
+    { "months": 1, "price": pricePerMonth, boc: "" },
+    { "months": 6, "price": pricePerMonth * 6, boc: "" },
+    { "months": 12, "price": pricePerMonth * 12, boc: "" }
 ];
 
 
@@ -59,6 +59,7 @@ function buy(event: Event, plan: Plan) {
     };
     try {
         const result = tonConnectUI.sendTransaction(transaction);
+        plan.boc = result.boc
         planStore.updatePlan(plan)
         router.push("/account")
         // const slice = Cell.fromBase64(result.boc).beginParse();
