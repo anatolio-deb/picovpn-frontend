@@ -23,6 +23,9 @@ importers:
       '@tonconnect/ui':
         specifier: ^2.2.0
         version: 2.2.0
+      '@townsquarelabs/ui-vue':
+        specifier: 2.0.11-beta.0
+        version: 2.0.11-beta.0(@vue/composition-api@1.7.2(vue@3.5.14(typescript@5.8.3)))(vue-demi@0.14.10(@vue/composition-api@1.7.2(vue@3.5.14(typescript@5.8.3)))(vue@3.5.14(typescript@5.8.3)))(vue@3.5.14(typescript@5.8.3))
       axios:
         specifier: ^1.9.0
         version: 1.9.0
@@ -496,11 +499,24 @@ packages:
   '@tonconnect/protocol@2.3.0':
     resolution: {integrity: sha512-OxrmcXF/EsSdGeASP9VpTRojuMtTV87DKYFLRq4ZJvF/Hirfm2cgcxzzj2uksEGm5IIR010UWo6b38RuokNwFQ==}
 
+  '@tonconnect/sdk@3.0.5':
+    resolution: {integrity: sha512-ow0qnN4s3iQ/r2uXobZ7YzdQBtan/36CgCT9IP35G07g38UxsUXwzw8ANmJTDj/JPiQcIKuYBMfIwIX9zLM0wg==}
+
   '@tonconnect/sdk@3.2.0':
     resolution: {integrity: sha512-lh4bKpSdWDNtlKy2mv7uhdLLqnIoKRgRKbANRa/liQoPb8nDftQo6TbU1BYEmOAF32GbFn+9Sw9azPup4vfzxg==}
 
+  '@tonconnect/ui@2.0.10-beta.0':
+    resolution: {integrity: sha512-epD/ATgwQ3inCY2adVEIgwCtOuM6F2CPhXbrRl1hQggnCGsbqYAz6gSD4sxkV0BInPpo/utSwlExpNpHMB1GLA==}
+
   '@tonconnect/ui@2.2.0':
     resolution: {integrity: sha512-a6D1iOteOkHHbOfDNZDRrCT8cZOTImh1Qdloq57iUGdXiCCrxD9sLhZ5He1qksKSlvhEUJBS1UypYxcYr9/vdw==}
+
+  '@townsquarelabs/ui-vue@2.0.11-beta.0':
+    resolution: {integrity: sha512-xg9hcQnDgD2pZFn6ZSkgk4m+pRY73cQdngYPnJfPiOVdiQg1wz6yviCs1M9+pg4aPmqedrL0HxRfSocuDD43eg==}
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^2.7.0 || >=3.0.0
+      vue-demi: ^0.14.8
 
   '@tsconfig/node22@22.0.2':
     resolution: {integrity: sha512-Kmwj4u8sDRDrMYRoN9FDEcXD8UpBSaPQQ24Gz+Gamqfm7xxn+GBR7ge/Z7pK8OXNGyUzbSwJj+TH6B+DS/epyA==}
@@ -600,6 +616,11 @@ packages:
 
   '@vue/compiler-vue2@2.7.16':
     resolution: {integrity: sha512-qYC3Psj9S/mfu9uVi5WvNZIzq+xnXMhOwbTFKKDD7b1lhpnn71jXSFdTQ+WsIEk0ONCd7VV2IMm7ONl6tbQ86A==}
+
+  '@vue/composition-api@1.7.2':
+    resolution: {integrity: sha512-M8jm9J/laYrYT02665HkZ5l2fWTK4dcVg3BsDHm/pfz+MjDYwX+9FUaZyGwEyXEDonQYRCo0H7aLgdklcIELjw==}
+    peerDependencies:
+      vue: '>= 2.5 < 2.7'
 
   '@vue/devtools-api@6.6.4':
     resolution: {integrity: sha512-sGhTPMuXqZ1rVOk32RylztWkfXTRhuS7vgAKv0zjqk8gbsHkJ7xfFf+jbySxt7tWObEJwyKaHMikV/WGDiQm8g==}
@@ -1741,6 +1762,17 @@ packages:
       axios: '*'
       vue: ^3.0.0 || ^2.0.0
 
+  vue-demi@0.14.10:
+    resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
+    engines: {node: '>=12'}
+    hasBin: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+
   vue-eslint-parser@10.1.3:
     resolution: {integrity: sha512-dbCBnd2e02dYWsXoqX5yKUZlOt+ExIpq7hmHKPb5ZqKcjf++Eo0hMseFTZMLKThrUk61m+Uv6A2YSBve6ZvuDQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -2135,11 +2167,29 @@ snapshots:
       tweetnacl: 1.0.3
       tweetnacl-util: 0.15.1
 
+  '@tonconnect/sdk@3.0.5':
+    dependencies:
+      '@tonconnect/isomorphic-eventsource': 0.0.2
+      '@tonconnect/isomorphic-fetch': 0.0.3
+      '@tonconnect/protocol': 2.3.0
+    transitivePeerDependencies:
+      - encoding
+
   '@tonconnect/sdk@3.2.0':
     dependencies:
       '@tonconnect/isomorphic-eventsource': 0.0.2
       '@tonconnect/isomorphic-fetch': 0.0.3
       '@tonconnect/protocol': 2.3.0
+    transitivePeerDependencies:
+      - encoding
+
+  '@tonconnect/ui@2.0.10-beta.0':
+    dependencies:
+      '@tonconnect/sdk': 3.0.5
+      classnames: 2.5.1
+      csstype: 3.1.3
+      deepmerge: 4.3.1
+      ua-parser-js: 1.0.40
     transitivePeerDependencies:
       - encoding
 
@@ -2150,6 +2200,15 @@ snapshots:
       csstype: 3.1.3
       deepmerge: 4.3.1
       ua-parser-js: 1.0.40
+    transitivePeerDependencies:
+      - encoding
+
+  '@townsquarelabs/ui-vue@2.0.11-beta.0(@vue/composition-api@1.7.2(vue@3.5.14(typescript@5.8.3)))(vue-demi@0.14.10(@vue/composition-api@1.7.2(vue@3.5.14(typescript@5.8.3)))(vue@3.5.14(typescript@5.8.3)))(vue@3.5.14(typescript@5.8.3))':
+    dependencies:
+      '@tonconnect/ui': 2.0.10-beta.0
+      '@vue/composition-api': 1.7.2(vue@3.5.14(typescript@5.8.3))
+      vue: 3.5.14(typescript@5.8.3)
+      vue-demi: 0.14.10(@vue/composition-api@1.7.2(vue@3.5.14(typescript@5.8.3)))(vue@3.5.14(typescript@5.8.3))
     transitivePeerDependencies:
       - encoding
 
@@ -2302,6 +2361,10 @@ snapshots:
     dependencies:
       de-indent: 1.0.2
       he: 1.2.0
+
+  '@vue/composition-api@1.7.2(vue@3.5.14(typescript@5.8.3))':
+    dependencies:
+      vue: 3.5.14(typescript@5.8.3)
 
   '@vue/devtools-api@6.6.4': {}
 
@@ -3402,6 +3465,12 @@ snapshots:
     dependencies:
       axios: 1.9.0
       vue: 3.5.14(typescript@5.8.3)
+
+  vue-demi@0.14.10(@vue/composition-api@1.7.2(vue@3.5.14(typescript@5.8.3)))(vue@3.5.14(typescript@5.8.3)):
+    dependencies:
+      vue: 3.5.14(typescript@5.8.3)
+    optionalDependencies:
+      '@vue/composition-api': 1.7.2(vue@3.5.14(typescript@5.8.3))
 
   vue-eslint-parser@10.1.3(eslint@9.27.0(jiti@2.4.2)):
     dependencies:

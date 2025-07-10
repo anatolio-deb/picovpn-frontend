@@ -31,6 +31,7 @@
                     </v-card-text>
                 </v-card>
             </v-menu>
+            <TonConnectButton />
             <!-- <v-app-bar-title>PicoVPN</v-app-bar-title> -->
         </v-app-bar>
     </v-layout>
@@ -38,6 +39,8 @@
 
 <script lang="ts" setup>
 import { useUserStore } from '@/stores/app';
+import { TonConnectButton } from '@townsquarelabs/ui-vue';
+
 
 const user = useUserStore()
 
