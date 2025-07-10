@@ -91,11 +91,12 @@ onMounted(() => {
         }
     }).catch((error) => {
         console.error(error);
-    });
-    setOptions({
-        actionsConfiguration: {
-            returnStrategy: "https://picovpn.ru/account"
-        }
+    }).finally(() => {
+        setOptions({
+            actionsConfiguration: {
+                returnStrategy: "https://picovpn.ru/account"
+            }
+        })
     })
 })
 
