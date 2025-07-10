@@ -16,7 +16,7 @@
 
                         <v-card-actions>
                             <v-btn color="deep-purple-accent-4" text="Upgrade" variant="text"
-                                @onClick="onClick()"></v-btn>
+                                @onClick="onClick"></v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-col>
@@ -95,7 +95,7 @@ onMounted(() => {
     });
 })
 
-function onClick() {
+function onClick(event: Event) {
     if (wallet == null) {
         open()
     } else {
