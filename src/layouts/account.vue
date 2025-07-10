@@ -15,7 +15,8 @@
                         </v-card-text>
 
                         <v-card-actions>
-                            <v-btn color="deep-purple-accent-4" text="Upgrade" variant="text"></v-btn>
+                            <v-btn color="deep-purple-accent-4" text="Upgrade" variant="text"
+                                @onClick="onClick()"></v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-col>
@@ -53,6 +54,14 @@
 
 <script setup lang="ts">
 import { usePlanStore, useDaemonStore, useUserStore } from '@/stores/app';
+import { useTonConnectModal } from '@townsquarelabs/ui-vue';
+import {
+    useTonWallet,
+    useTonAddress,
+    useTonConnectUI
+} from "@townsquarelabs/ui-vue";
+
+
 // import { TonConnectUI } from '@tonconnect/ui'
 
 // const tonConnectUI = new TonConnectUI({
@@ -63,6 +72,9 @@ import { usePlanStore, useDaemonStore, useUserStore } from '@/stores/app';
 const plan = usePlanStore()
 const daemons = useDaemonStore()
 const user = useUserStore()
+const wallet = useTonWallet();
+const { state, open, close } = useTonConnectModal();
+const { tonConnectUI } = useTonConnectUI();
 
 
 onMounted(() => {
@@ -82,4 +94,30 @@ onMounted(() => {
         console.error(error);
     });
 })
+
+function onClick() {
+    if (wallet == null) {
+        open()
+    } else {
+        const transaction = {
+            validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
+            messages: [
+                {
+                    address: "TON_OWNER_WALLET_ADDRESS",
+                    amount: "", // extra conversion needed??
+                    // stateInit: wallet.value?.account.walletStateInit // is it ok?
+                }
+            ]
+        };
+        try {
+            const result = tonConnectUI.sendTransaction(transaction);
+
+            // you can use signed boc to find the transaction 
+            // const someTxData = myAppExplorerService.getTransaction(result.boc);
+            // alert('Transaction was sent successfully', someTxData);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+}
 </script>
