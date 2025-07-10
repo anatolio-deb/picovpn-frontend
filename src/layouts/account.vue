@@ -73,7 +73,7 @@ const daemons = useDaemonStore()
 const user = useUserStore()
 const wallet = useTonWallet();
 const { state, open, close } = useTonConnectModal();
-const { tonConnectUI } = useTonConnectUI();
+const { tonConnectUI, setOptions } = useTonConnectUI();
 
 
 onMounted(() => {
@@ -92,6 +92,11 @@ onMounted(() => {
     }).catch((error) => {
         console.error(error);
     });
+    setOptions({
+        actionsConfiguration: {
+            returnStrategy: "https://picovpn.ru/account"
+        }
+    })
 })
 
 function onClick(event: Event) {
