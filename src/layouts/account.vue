@@ -15,8 +15,7 @@
                         </v-card-text>
 
                         <v-card-actions>
-                            <v-btn color="deep-purple-accent-4" text="Upgrade" variant="text"
-                                @onClick="onClick"></v-btn>
+                            <v-btn color="deep-purple-accent-4" text="Upgrade" variant="text" @click="onClick"></v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-col>
