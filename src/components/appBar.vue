@@ -31,8 +31,10 @@
                     </v-card-text>
                 </v-card>
             </v-menu>
-            <TonConnectButton />
-            <!-- <v-app-bar-title>PicoVPN</v-app-bar-title> -->
+            <v-app-bar-title></v-app-bar-title>
+            <template v-slot:append>
+                <TonConnectButton />
+            </template>
         </v-app-bar>
     </v-layout>
 </template>
