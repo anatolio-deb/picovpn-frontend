@@ -12,6 +12,7 @@ import auth from "@/layouts/auth.vue";
 import home from "@/layouts/home.vue";
 import account from "@/layouts/account.vue"
 import passwordReset from "@/layouts/password-reset.vue";
+import buy from "@/layouts/buy.vue";
 
 
 const router = createRouter({
@@ -22,6 +23,7 @@ const router = createRouter({
     { path: "/try", component: auth },
     { path: "/account", component: account},
     {path:"/password-reset", component: passwordReset},
+    {path:"/buy", component: buy}
     ],
 });
 

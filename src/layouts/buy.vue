@@ -49,7 +49,7 @@ function buy(event: Event, plan: Plan) {
             {
                 address: 'UQCfkeI1uFsuDgW5j7WNwbtQwSqCe4C1_FCJNbfbo8ifF3xF',
                 amount: plan.price, // extra conversion needed??
-                // stateInit: wallet.value?.account.walletStateInit // is it ok?
+                // stateInit: wallet.value?.account.walletStateInit 
             }
         ]
     };
