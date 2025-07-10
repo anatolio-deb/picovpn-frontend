@@ -23,7 +23,7 @@ import { TonConnectUIPlugin } from '@townsquarelabs/ui-vue'
 
 const app = createApp(App)
 app.use(VueAxios, axios)
-app.use(TonConnectUIPlugin,{ manifestUrl: "https://github.com/nikiforidi/picovpn-app/blob/3eded595fc8820db3f74df52048592a2c7edafb0/tonconnect-manifest.json" }).mount('#app')
+app.use(TonConnectUIPlugin,{ manifestUrl: "https://github.com/nikiforidi/picovpn-app/blob/3eded595fc8820db3f74df52048592a2c7edafb0/tonconnect-manifest.json" })
 
 registerPlugins(app)
 
