@@ -11,6 +11,7 @@ export interface Plan {
     months: number;
     price: number;
     boc: string;
+    comment: string;
 }
 
 export interface Daemon{
