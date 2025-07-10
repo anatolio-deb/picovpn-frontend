@@ -3,7 +3,7 @@
         <v-btn icon="mdi-arrow-left" href="/account">
         </v-btn>
     </v-app-bar>
-    <v-container>
+    <v-main>
         <v-row>
             <v-col v-for="(plan, i) in plans" :key="i" cols="12" md="4">
                 <v-card :plan="plan" class="mx-auto" :subtitle="plan.price + ' ' + 'TON 💎'"
@@ -14,7 +14,7 @@
                 </v-card>
             </v-col>
         </v-row>
-    </v-container>
+    </v-main>
 
 </template>
 
