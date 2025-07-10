@@ -95,6 +95,7 @@ onMounted(() => {
 })
 
 function onClick(event: Event) {
+    console.log(wallet)
     if (wallet == null) {
         open()
     } else {
