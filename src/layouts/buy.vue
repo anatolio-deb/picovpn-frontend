@@ -24,7 +24,7 @@ import {
     useTonAddress,
     useTonConnectUI
 } from "@townsquarelabs/ui-vue";
-import { loadMessage, Cell } from '@ton/core';
+// import { loadMessage, Cell } from '@ton/core';
 import router from "@/router";
 
 
@@ -59,11 +59,12 @@ function buy(event: Event, plan: Plan) {
     };
     try {
         const result = tonConnectUI.sendTransaction(transaction);
-        const slice = Cell.fromBase64(result.boc).beginParse();
-        const message = loadMessage(slice);
-        if (message.body.toString() == comment) {
-            router.push("/account")
-        }
+        router.push("/account")
+        // const slice = Cell.fromBase64(result.boc).beginParse();
+        // const message = loadMessage(slice);
+        // if (message.body.toString() == comment) {
+        //     router.push("/account")
+        // }
 
         // you can use signed boc to find the transaction 
         // const someTxData = myAppExplorerService.getTransaction(result.boc);
