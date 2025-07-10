@@ -2,6 +2,8 @@
 import { defineStore } from 'pinia'
 import moment from 'moment';
 import apiService, { type Daemon } from '@/api/axios';
+import { type Plan } from "@/api/axios";
+
 
 export const useUserStore = defineStore('users', {
   state: () => ({
@@ -85,6 +87,15 @@ export const usePlanStore = defineStore('plan', {
         // .catch((error) => {
         //     throw error;
         // });
+    },
+    updatePlan(plan: Plan){
+      apiService.planUpdate(plan).then((response) => {
+            if (response.status === 200) {
+                this.plan = response.data
+            } else {
+                throw new Error(response.data.message);
+            }
+        })
     }
   }
 })

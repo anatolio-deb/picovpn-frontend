@@ -7,6 +7,11 @@ interface UserData {
     password_confirmation: string | null,
 }
 
+export interface Plan {
+    months: number;
+    price: number;
+}
+
 export interface Daemon{
     address: string
 }
@@ -71,6 +76,12 @@ class ApiService {
 
     getDaemons(){
         return this.axiosInstance.get("/daemons", {
+            headers: this.getAuthHeader()
+        });
+    }
+
+    planUpdate(data: Plan){
+        return this.axiosInstance.post("/plans", data, {
             headers: this.getAuthHeader()
         });
     }

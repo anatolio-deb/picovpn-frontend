@@ -26,14 +26,14 @@ import {
 } from "@townsquarelabs/ui-vue";
 // import { loadMessage, Cell } from '@ton/core';
 import router from "@/router";
+import { type Plan } from "@/api/axios";
+import { usePlanStore } from '@/stores/app';
 
 
+const planStore = usePlanStore();
 const { tonConnectUI, setOptions } = useTonConnectUI();
 
-interface Plan {
-    months: number;
-    price: number;
-}
+
 
 const pricePerMonth = 1;
 
@@ -59,6 +59,7 @@ function buy(event: Event, plan: Plan) {
     };
     try {
         const result = tonConnectUI.sendTransaction(transaction);
+        planStore.updatePlan(plan)
         router.push("/account")
         // const slice = Cell.fromBase64(result.boc).beginParse();
         // const message = loadMessage(slice);
