@@ -51,7 +51,7 @@ function buy(event: Event, plan: Plan) {
         messages: [
             {
                 address: 'UQCfkeI1uFsuDgW5j7WNwbtQwSqCe4C1_FCJNbfbo8ifF3xF',
-                amount: plan.price, // extra conversion needed??
+                amount: plan.price,
                 // stateInit: wallet.value?.account.walletStateInit
                 body: comment,
             }
