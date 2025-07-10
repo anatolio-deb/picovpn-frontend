@@ -1,15 +1,20 @@
 <template>
-    <AppBar />
-    <v-row>
-        <v-col v-for="(plan, i) in plans" :key="i" cols="12" md="4">
-            <v-card :plan="plan" class="mx-auto" :subtitle="plan.price + ' ' + 'TON 💎'"
-                :title="plan.months + ' ' + 'Month' + postfix(plan)">
-                <template v-slot:actions>
-                    <v-btn text="Buy" @click="buy($event, plan)"></v-btn>
-                </template>
-            </v-card>
-        </v-col>
-    </v-row>
+    <v-app-bar :elevation="2" color="black">
+        <v-btn icon="mdi-arrow-left" href="/account">
+        </v-btn>
+    </v-app-bar>
+    <v-container>
+        <v-row>
+            <v-col v-for="(plan, i) in plans" :key="i" cols="12" md="4">
+                <v-card :plan="plan" class="mx-auto" :subtitle="plan.price + ' ' + 'TON 💎'"
+                    :title="plan.months + ' ' + 'Month' + postfix(plan)">
+                    <template v-slot:actions>
+                        <v-btn text="Buy" @click="buy($event, plan)"></v-btn>
+                    </template>
+                </v-card>
+            </v-col>
+        </v-row>
+    </v-container>
 
 </template>
 
