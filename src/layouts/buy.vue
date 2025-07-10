@@ -24,6 +24,8 @@ import {
     useTonAddress,
     useTonConnectUI
 } from "@townsquarelabs/ui-vue";
+import { loadMessage, Cell } from '@ton/core';
+import router from "@/router";
 
 
 const { tonConnectUI, setOptions } = useTonConnectUI();
@@ -43,18 +45,25 @@ const plans: Plan[] = [
 
 
 function buy(event: Event, plan: Plan) {
+    const comment = Math.random().toString(36).substring(2, 8) + "picovpn";
     const transaction = {
         validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
         messages: [
             {
                 address: 'UQCfkeI1uFsuDgW5j7WNwbtQwSqCe4C1_FCJNbfbo8ifF3xF',
                 amount: plan.price, // extra conversion needed??
-                // stateInit: wallet.value?.account.walletStateInit 
+                // stateInit: wallet.value?.account.walletStateInit
+                body: comment,
             }
         ]
     };
     try {
         const result = tonConnectUI.sendTransaction(transaction);
+        const slice = Cell.fromBase64(result.boc).beginParse();
+        const message = loadMessage(slice);
+        if (message.body.toString() == comment) {
+            router.push("/account")
+        }
 
         // you can use signed boc to find the transaction 
         // const someTxData = myAppExplorerService.getTransaction(result.boc);
